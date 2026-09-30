@@ -1,0 +1,1482 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>All Spare Parts — EVoltParts</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="{% static 'css/allproductcss.css' %}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg ev-navbar sticky-top">
+
+    <div class="container-fluid container-xxl">
+
+
+        <!-- BRAND -->
+
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white fw-bold fs-4"
+           href="{% url 'home' name=name %}">
+
+            <i class="fa-solid fa-bolt ev-brand-icon"></i>
+
+            <span>
+                EVolt<span class="text-success">Parts</span>
+            </span>
+
+        </a>
+
+
+        <!-- MOBILE TOGGLE -->
+
+        <button class="navbar-toggler border-0 text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="collapse navbar-collapse justify-content-between"
+             id="mainNavbar">
+
+
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{% url 'home' name=name %}">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="{% url 'allproduct' name=name %}">
+
+                        Spare Parts
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{% url 'viewallcategory' name=name %}">
+
+                        Categories
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#">
+
+                        My Garage
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#">
+
+                        Orders
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- NAV ACTIONS -->
+
+            <div class="d-flex align-items-center gap-2">
+
+
+                <!-- WISHLIST -->
+
+                <a href="{% url 'wishlist' name=name %}"
+                   class="navbar-action"
+                   title="Wishlist"
+                   aria-label="Wishlist">
+
+                    <i class="fa-regular fa-heart fs-5"></i>
+
+                </a>
+
+
+                <!-- CART -->
+
+                <a href="{% url 'cart' name=name %}"
+                   class="navbar-action position-relative"
+                   title="Cart"
+                   aria-label="Cart">
+
+                    <i class="fa-solid fa-cart-shopping fs-5"></i>
+
+                    {% if cart_count %}
+
+                        <span class="cart-badge">
+                            {{ cart_count }}
+                        </span>
+
+                    {% endif %}
+
+                </a>
+
+
+                <!-- PROFILE -->
+
+                <div class="profile-wrapper">
+
+
+                    <button type="button"
+                            class="profile-avatar-btn"
+                            id="profileAvatarBtn"
+                            aria-label="Open profile"
+                            aria-expanded="false">
+
+                        {{ name|first|upper }}
+
+                    </button>
+
+
+                    <div class="profile-dropdown"
+                         id="profileDropdown">
+
+
+                        <div class="profile-user">
+
+                            <div class="profile-avatar-large">
+
+                                {{ name|first|upper }}
+
+                            </div>
+
+
+                            <div class="profile-user-info">
+
+                                <span class="profile-welcome">
+                                    Welcome back
+                                </span>
+
+                                <strong>
+                                    {{ name }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-divider"></div>
+
+
+                        <a href="{% url 'profile' %}"
+                           class="profile-menu-item">
+
+                            <span class="profile-menu-icon">
+
+                                <i class="fa-regular fa-user"></i>
+
+                            </span>
+
+                            <span>
+                                My Profile
+                            </span>
+
+                        </a>
+
+
+                        <a href="#"
+                           class="profile-menu-item">
+
+                            <span class="profile-menu-icon">
+
+                                <i class="fa-solid fa-motorcycle"></i>
+
+                            </span>
+
+                            <span>
+                                My Garage
+                            </span>
+
+                        </a>
+
+
+                        <a href="{% url 'wishlist' name=name %}"
+                            class="profile-menu-item">
+
+                                <span class="profile-menu-icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </span>
+
+                                <span>
+                                    Wishlist
+                                </span>
+
+                        </a>
+
+
+                        <a href="{% url 'cart' name=name %}"
+                           class="profile-menu-item">
+
+                            <span class="profile-menu-icon">
+
+                                <i class="fa-solid fa-cart-shopping"></i>
+
+                            </span>
+
+                            <span>
+                                My Cart
+                            </span>
+
+                        </a>
+
+
+                        <div class="profile-divider"></div>
+
+
+                        <a href="{% url 'login' %}"
+                           class="profile-menu-item profile-logout">
+
+                            <span class="profile-menu-icon">
+
+                                <i class="fa-solid fa-right-from-bracket"></i>
+
+                            </span>
+
+                            <span>
+                                Logout
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="container-xxl py-4">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <header class="mb-4">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb mb-2"
+                style="font-size: 0.85rem;">
+
+                <li class="breadcrumb-item">
+
+                    <a href="{% url 'home' name=name %}"
+                       class="text-muted text-decoration-none">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="breadcrumb-item">
+
+                    <a href="{% url 'allproduct' name=name %}"
+                       class="text-muted text-decoration-none">
+
+                        Spare Parts
+
+                    </a>
+
+                </li>
+
+
+                <li class="breadcrumb-item active text-dark fw-semibold"
+                    aria-current="page">
+
+                    All Products
+
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+        <h1 class="fw-bold mb-1 display-6 text-dark">
+
+            All Spare Parts
+
+        </h1>
+
+
+        <p class="text-muted mb-0">
+
+            Find the right spare parts and accessories
+            for your electric two-wheeler.
+
+        </p>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         FILTER SECTION
+    ====================================================== -->
+
+    <section class="filter-card mb-4">
+
+        <div class="d-flex flex-column flex-md-row
+                    justify-content-between
+                    align-items-md-center
+                    gap-2 mb-4">
+
+            <div>
+
+                <h5 class="filter-title mb-1">
+
+                    <i class="fa-solid fa-sliders me-2 text-emerald"></i>
+
+                    Filter Spare Parts
+
+                </h5>
+
+                <p class="text-muted small mb-0">
+
+                    Select the options below to find compatible products.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form method="GET"
+              action="{% url 'allproduct' name=name %}">
+
+
+            <div class="row g-3">
+
+
+                <!-- SEARCH -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <label class="filter-label">
+
+                        Search Products
+
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text bg-white">
+
+                            <i class="fa-solid fa-magnifying-glass text-emerald"></i>
+
+                        </span>
+
+                        <input type="text"
+                               name="q"
+                               value="{{ search_query }}"
+                               class="form-control filter-input"
+                               placeholder="Search product, vehicle, brand...">
+
+                    </div>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="col-lg-2 col-md-6">
+
+                    <label class="filter-label">
+
+                        Category
+
+                    </label>
+
+                    <select name="category"
+                            class="form-select filter-select">
+
+                        <option value="">All Categories</option>
+
+                        <option value="braking"
+                            {% if selected_category == "braking" %}selected{% endif %}>
+
+                            Braking
+
+                        </option>
+
+                        <option value="electrical"
+                            {% if selected_category == "electrical" %}selected{% endif %}>
+
+                            Electrical
+
+                        </option>
+
+                        <option value="charging"
+                            {% if selected_category == "charging" %}selected{% endif %}>
+
+                            Charging
+
+                        </option>
+
+                        <option value="motor"
+                            {% if selected_category == "motor" %}selected{% endif %}>
+
+                            Motor
+
+                        </option>
+
+                        <option value="tyres"
+                            {% if selected_category == "tyres" %}selected{% endif %}>
+
+                            Tyres
+
+                        </option>
+
+                        <option value="lighting"
+                            {% if selected_category == "lighting" %}selected{% endif %}>
+
+                            Lighting
+
+                        </option>
+
+                        <option value="suspension"
+                            {% if selected_category == "suspension" %}selected{% endif %}>
+
+                            Suspension
+
+                        </option>
+
+                        <option value="wires"
+                            {% if selected_category == "wires" %}selected{% endif %}>
+
+                            Wiring
+
+                        </option>
+
+                        <option value="accessories"
+                            {% if selected_category == "accessories" %}selected{% endif %}>
+
+                            Accessories
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- VEHICLE BRAND -->
+
+                <div class="col-lg-2 col-md-6">
+
+                    <label class="filter-label">
+
+                        Vehicle Brand
+
+                    </label>
+
+                    <select name="vehicle_brand"
+                            class="form-select filter-select">
+
+                        <option value="">All Vehicle Brands</option>
+
+                        <option value="Ather"
+                            {% if selected_vehicle_brand == "Ather" %}selected{% endif %}>
+
+                            Ather
+
+                        </option>
+
+                        <option value="Ola"
+                            {% if selected_vehicle_brand == "Ola" %}selected{% endif %}>
+
+                            Ola
+
+                        </option>
+
+                        <option value="TVS"
+                            {% if selected_vehicle_brand == "TVS" %}selected{% endif %}>
+
+                            TVS
+
+                        </option>
+
+                        <option value="Bajaj"
+                            {% if selected_vehicle_brand == "Bajaj" %}selected{% endif %}>
+
+                            Bajaj
+
+                        </option>
+
+                        <option value="Vida"
+                            {% if selected_vehicle_brand == "Vida" %}selected{% endif %}>
+
+                            Vida
+
+                        </option>
+
+                        <option value="Simple Energy"
+                            {% if selected_vehicle_brand == "Simple Energy" %}selected{% endif %}>
+
+                            Simple Energy
+
+                        </option>
+
+                        <option value="Ultraviolette"
+                            {% if selected_vehicle_brand == "Ultraviolette" %}selected{% endif %}>
+
+                            Ultraviolette
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- VEHICLE MODEL -->
+
+                <div class="col-lg-2 col-md-6">
+
+                    <label class="filter-label">
+
+                        Vehicle Model
+
+                    </label>
+
+                    <select name="vehicle_name"
+                            class="form-select filter-select">
+
+                        <option value="">All Models</option>
+
+                        <option value="450X"
+                            {% if selected_vehicle_name == "450X" %}selected{% endif %}>
+
+                            Ather 450X
+
+                        </option>
+
+                        <option value="Rizta"
+                            {% if selected_vehicle_name == "Rizta" %}selected{% endif %}>
+
+                            Ather Rizta
+
+                        </option>
+
+                        <option value="S1 Pro"
+                            {% if selected_vehicle_name == "S1 Pro" %}selected{% endif %}>
+
+                            Ola S1 Pro
+
+                        </option>
+
+                        <option value="iQube"
+                            {% if selected_vehicle_name == "iQube" %}selected{% endif %}>
+
+                            TVS iQube
+
+                        </option>
+
+                        <option value="Chetak"
+                            {% if selected_vehicle_name == "Chetak" %}selected{% endif %}>
+
+                            Bajaj Chetak
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PRODUCT BRAND -->
+
+                <div class="col-lg-2 col-md-6">
+
+                    <label class="filter-label">
+
+                        Product Brand
+
+                    </label>
+
+                    <select name="product_brand"
+                            class="form-select filter-select">
+
+                        <option value="">All Product Brands</option>
+
+                        <option value="Ather"
+                            {% if selected_product_brand == "Ather" %}selected{% endif %}>
+
+                            Ather
+
+                        </option>
+
+                        <option value="Ola"
+                            {% if selected_product_brand == "Ola" %}selected{% endif %}>
+
+                            Ola
+
+                        </option>
+
+                        <option value="TVS"
+                            {% if selected_product_brand == "TVS" %}selected{% endif %}>
+
+                            TVS
+
+                        </option>
+
+                        <option value="Bajaj"
+                            {% if selected_product_brand == "Bajaj" %}selected{% endif %}>
+
+                            Bajaj
+
+                        </option>
+
+                        <option value="Generic"
+                            {% if selected_product_brand == "Generic" %}selected{% endif %}>
+
+                            Generic
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- STOCK -->
+
+                <div class="col-lg-2 col-md-6">
+
+                    <label class="filter-label">
+
+                        Stock
+
+                    </label>
+
+                    <select name="stock"
+                            class="form-select filter-select">
+
+                        <option value="">All Stock</option>
+
+                        <option value="available"
+                            {% if selected_stock == "available" %}selected{% endif %}>
+
+                            In Stock
+
+                        </option>
+
+                        <option value="out"
+                            {% if selected_stock == "out" %}selected{% endif %}>
+
+                            Out of Stock
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SORT -->
+
+                <div class="col-lg-2 col-md-6">
+
+                    <label class="filter-label">
+
+                        Sort By
+
+                    </label>
+
+                    <select name="sort"
+                            class="form-select filter-select">
+
+                        <option value=""
+                            {% if selected_sort == "" %}selected{% endif %}>
+
+                            Recommended
+
+                        </option>
+
+                        <option value="price_low"
+                            {% if selected_sort == "price_low" %}selected{% endif %}>
+
+                            Price: Low to High
+
+                        </option>
+
+                        <option value="price_high"
+                            {% if selected_sort == "price_high" %}selected{% endif %}>
+
+                            Price: High to Low
+
+                        </option>
+
+                        <option value="name_asc"
+                            {% if selected_sort == "name_asc" %}selected{% endif %}>
+
+                            Name: A to Z
+
+                        </option>
+
+                        <option value="name_desc"
+                            {% if selected_sort == "name_desc" %}selected{% endif %}>
+
+                            Name: Z to A
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-end gap-2">
+
+                    <button type="submit"
+                            class="btn btn-filter flex-grow-1">
+
+                        <i class="fa-solid fa-filter me-2"></i>
+
+                        Apply Filters
+
+                    </button>
+
+
+                    <a href="{% url 'allproduct' name=name %}"
+                       class="btn btn-clear">
+
+                        <i class="fa-solid fa-rotate-left me-2"></i>
+
+                        Clear
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         POPULAR CATEGORIES
+    ====================================================== -->
+
+    <section class="mb-5 ev-category-scroll pb-2">
+
+        <div class="ev-category-list">
+
+
+            <span class="text-emerald small fw-bold me-1 d-flex align-items-center gap-1 text-nowrap">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                Popular:
+
+            </span>
+
+
+            <a href="{% url 'allproduct' name=name %}"
+               class="ev-quick-pill-page">
+
+                All
+
+            </a>
+
+
+            <a href="{% url 'productbreak' name=name %}"
+               class="ev-quick-pill">
+
+                Brake Pads
+
+            </a>
+
+
+            <a href="{% url 'productcharge' name=name %}"
+               class="ev-quick-pill">
+
+                Chargers
+
+            </a>
+
+
+            <a href="{% url 'productcontroller' name=name %}"
+               class="ev-quick-pill">
+
+                Controllers
+
+            </a>
+
+
+            <a href="{% url 'producttyre' name=name %}"
+               class="ev-quick-pill">
+
+                Tyres
+
+            </a>
+
+
+            <a href="{% url 'productmotor' name=name %}"
+               class="ev-quick-pill">
+
+                Motors
+
+            </a>
+
+
+            <a href="{% url 'productsuspension' name=name %}"
+               class="ev-quick-pill">
+
+                Suspensions
+
+            </a>
+
+
+            <a href="{% url 'productlight' name=name %}"
+               class="ev-quick-pill">
+
+                Lights
+
+            </a>
+
+
+            <a href="{% url 'productwiring' name=name %}"
+               class="ev-quick-pill">
+
+                Wiring
+
+            </a>
+
+
+            <a href="{% url 'productaccessories' name=name %}"
+               class="ev-quick-pill">
+
+                Accessories
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCT HEADER
+    ====================================================== -->
+
+    <section class="mb-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 border-bottom pb-3">
+
+
+        <div>
+
+            <h2 class="fw-bold fs-4 mb-1">
+
+                {% if search_query %}
+
+                    Search Results
+
+                {% elif selected_category %}
+
+                    {{ selected_category|title }} Parts
+
+                {% elif selected_vehicle_brand %}
+
+                    {{ selected_vehicle_brand }} Compatible Parts
+
+                {% else %}
+
+                    All Spare Parts
+
+                {% endif %}
+
+            </h2>
+
+
+            <p class="text-muted small mb-0">
+
+                Browse compatible parts for your electric two-wheeler.
+
+            </p>
+
+        </div>
+
+
+        <div>
+
+            {% if Datas %}
+
+                <span class="badge rounded-pill px-3 py-2"
+                      style="background:#e8f5e9;color:#1b4332;">
+
+                    {{ Datas|length }} Products Found
+
+                </span>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTS
+    ====================================================== -->
+
+    {% if Datas %}
+
+        <section class="mb-5">
+
+            <div id="productGrid"
+                 class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+
+
+                {% for data in Datas %}
+
+
+                    <div class="col product-item"
+                         data-search="{{ data.Product_name|lower }} {{ data.Vehichel_name|lower }} {{ data.Category|lower }} {{ data.Brand_name|lower }} {{ data.Brand|lower }} {{ data.vechichel_brand|lower }} {{ data.Company|lower }}">
+
+
+                        <div class="ev-product-card">
+
+
+                            <!-- PRODUCT IMAGE -->
+
+                            <div class="ev-img-container">
+
+                                {% if data.Image_url %}
+
+                                    <img src="{{ data.Image_url }}"
+                                        alt="{{ data.Product_name }}"
+                                        loading="lazy">
+
+                                {% else %}
+
+                                    <i class="fa-solid fa-box-open text-emerald"
+                                    style="font-size: 3rem; opacity: 0.6;">
+                                    </i>
+
+                                {% endif %}
+
+
+                                <!-- FAVORITE HEART -->
+                                
+                                <form method="POST"
+                                    action="{% url 'add_favourite' name=name product_id=data.id %}"
+                                    class="favorite-form">
+
+                                    {% csrf_token %}
+
+                                    <button type="submit"
+                                            class="favorite-btn"
+                                            title="Add to Favorites">
+
+                                        <i class="fa-regular fa-heart"></i>
+
+                                    </button>
+
+                                </form>
+
+
+                                <!-- CATEGORY -->
+                                {% if data.Category %}
+
+                                    <span class="ev-badge-category">
+                                        {{ data.Category }}
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+
+
+                            <!-- PRODUCT DETAILS -->
+
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+
+
+                                <!-- PRODUCT NAME -->
+
+                                <h5 class="fw-bold text-dark product-name mb-2">
+
+                                    {{ data.Product_name }}
+
+                                </h5>
+
+
+
+                                <!-- VEHICLE -->
+
+                                <div class="vehicle-name mb-3">
+
+                                    {% if data.Vehichel_name %}
+
+                                        <i class="fa-solid fa-motorcycle me-1 text-emerald"></i>
+
+                                        {{ data.Vehichel_name }}
+
+                                    {% else %}
+
+                                        <span class="text-muted">
+
+                                            Vehicle compatibility not specified
+
+                                        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+
+
+                                <!-- VEHICLE BRAND -->
+
+                                {% if data.vechichel_brand %}
+
+                                    <div class="small text-muted mb-2">
+
+                                        <i class="fa-solid fa-tag me-1 text-emerald"></i>
+
+                                        {{ data.vechichel_brand }}
+
+                                    </div>
+
+                                {% endif %}
+
+
+
+                                <!-- PRICE -->
+
+                                <div class="d-flex align-items-baseline gap-2 mb-2">
+
+
+                                    {% if data.Discount_price %}
+
+                                        <span class="product-price">
+
+                                            {{ data.Discount_price }}
+
+                                        </span>
+
+
+                                        {% if data.Price %}
+
+                                            <span class="original-price">
+
+                                                {{ data.Price }}
+
+                                            </span>
+
+                                        {% endif %}
+
+
+                                    {% else %}
+
+                                        <span class="product-price">
+
+                                            {{ data.Price }}
+
+                                        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+
+
+                                <!-- STOCK -->
+
+                                <div class="mb-3">
+
+                                    {% if data.Stock_availability == "In Stock" %}
+
+                                        <span class="stock-available">
+
+                                            <i class="fa-solid fa-circle-check me-1"></i>
+
+                                            In Stock
+
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="stock-unavailable">
+
+                                            <i class="fa-solid fa-circle-xmark me-1"></i>
+
+                                            {{ data.Stock_availability }}
+
+                                        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+
+
+                                <!-- BUTTONS -->
+
+                                <div class="d-flex gap-2 mt-auto">
+
+
+                                    <!-- VIEW DETAILS -->
+
+                                    <a href="#"
+                                       class="btn btn-ev-outline btn-sm flex-grow-1 py-2">
+
+                                        View Details
+
+                                    </a>
+
+
+                                    <!-- ADD TO CART -->
+
+                                    <a href="{% url 'addtocart' name=name Product_id=data.id %}"
+                                       class="btn btn-ev-primary btn-sm px-3 py-2"
+                                       title="Add to Cart"
+                                       aria-label="Add {{ data.Product_name }} to cart">
+
+                                        <i class="fa-solid fa-cart-shopping"></i>
+
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+        </section>
+
+
+    {% else %}
+
+
+        <!-- =================================================
+             NO PRODUCTS
+        ================================================== -->
+
+        <section class="empty-products text-center mb-5">
+
+
+            <div class="empty-products-icon">
+
+                <i class="fa-solid fa-box-open"></i>
+
+            </div>
+
+
+            <h4 class="fw-bold text-dark">
+
+                No Spare Parts Found
+
+            </h4>
+
+
+            <p class="text-muted mb-3">
+
+                No products match your selected filters.
+
+            </p>
+
+
+            <a href="{% url 'allproduct' name=name %}"
+               class="btn btn-ev-primary px-4 py-2">
+
+                <i class="fa-solid fa-rotate-left me-2"></i>
+
+                View All Products
+
+            </a>
+
+
+        </section>
+
+
+    {% endif %}
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="ev-footer py-4 text-center text-muted small">
+
+    <div class="container">
+
+        <p class="mb-1">
+
+            © 2026 EVoltParts.
+
+        </p>
+
+        <p class="mb-0">
+
+            Specialized Electric Two-Wheeler Spare Parts & Accessories Platform.
+
+            <span class="fw-semibold">
+
+                No complete vehicles sold.
+
+            </span>
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     BOOTSTRAP JS
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       PROFILE DROPDOWN
+    ===================================================== */
+
+    const profileButton =
+        document.getElementById("profileAvatarBtn");
+
+    const profileDropdown =
+        document.getElementById("profileDropdown");
+
+
+    if (profileButton && profileDropdown) {
+
+
+        profileButton.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            const isOpen =
+                profileDropdown.classList.contains("show");
+
+
+            if (isOpen) {
+
+                profileDropdown.classList.remove("show");
+
+                profileButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            } else {
+
+                profileDropdown.classList.add("show");
+
+                profileButton.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+            }
+
+        });
+
+
+        document.addEventListener("click", function () {
+
+            profileDropdown.classList.remove("show");
+
+            profileButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        });
+
+
+        profileDropdown.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopPropagation();
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SEARCH INPUT
+       ENTER KEY SUBMISSION
+    ===================================================== */
+
+    const searchInput =
+        document.querySelector('input[name="q"]');
+
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            "keypress",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    this.closest("form").submit();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       AUTO SUBMIT SORT
+    ===================================================== */
+
+    const sortSelect =
+        document.querySelector('select[name="sort"]');
+
+
+    if (sortSelect) {
+
+        sortSelect.addEventListener(
+            "change",
+            function () {
+
+                this.closest("form").submit();
+
+            }
+        );
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>

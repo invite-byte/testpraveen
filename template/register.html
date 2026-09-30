@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - EVoltParts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/registercss.css' %}">
+</head>
+<body class="ev-body">
+
+    <main class="container-fluid p-0 min-vh-100 d-flex">
+        <div class="row g-0 w-100">
+            
+            <section class="col-lg-6 d-none d-lg-flex ev-brand-section position-relative overflow-hidden align-items-center justify-content-center p-5">
+                <div class="ev-tech-pattern position-absolute w-100 h-100"></div>
+                <div class="ev-radial-glow position-absolute"></div>
+
+                <div class="ev-brand-content position-relative z-2 text-start max-w-lg">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="ev-logo-icon me-3">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="ev-logo-text fs-3 fw-bold tracking-tight text-white">EVolt<span class="text-accent">Parts</span></span>
+                    </div>
+
+                    <div class="ev-hero-visual-card my-4 p-4 rounded-4 border border-secondary border-opacity-25 shadow-lg">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="badge bg-accent-subtle text-accent px-3 py-1 rounded-pill fw-semibold small">
+                                <i class="fa-solid fa-microchip me-1"></i> OEM Verified Components
+                            </span>
+                            <span class="text-muted small">Model: EV-Drive X9</span>
+                        </div>
+                        <div class="ev-component-graphic text-center py-4">
+                            <i class="fa-solid fa-bicycle display-1 text-white opacity-75"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary border-opacity-10 text-muted small">
+                            <span><i class="fa-solid fa-shield-halved text-accent me-1"></i> 100% Compatibility Guarantee</span>
+                            <span>Express Dispatch</span>
+                        </div>
+                    </div>
+
+                    <h1 class="display-5 fw-bold text-white mb-3">Powering Every Ride.</h1>
+                    <p class="text-secondary lead fs-6 mb-0">
+                        "Create your account and discover the right parts for your electric bike."
+                    </p>
+                </div>
+            </section>
+
+            <section class="col-12 col-lg-6 d-flex align-items-center justify-content-center p-4 p-md-5 ev-form-section">
+                <div class="ev-login-card w-100 p-4 p-sm-5 rounded-4 shadow-lg border border-secondary border-opacity-25">
+                    
+                    <div class="d-lg-none text-center mb-4">
+                        <div class="d-inline-flex align-items-center mb-2">
+                            <div class="ev-logo-icon me-2">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <span class="ev-logo-text fs-4 fw-bold text-white">EVolt<span class="text-accent">Parts</span></span>
+                        </div>
+                        <p class="text-muted small">Powering Every Ride.</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h2 class="h3 fw-bold text-white mb-1">Create Your Account</h2>
+                        <p class="text-secondary small mb-0">Join EVoltParts and find the right parts for your electric bike.</p>
+                    </div>
+
+                    <form id="evRegisterForm" method="POST" action="{% url 'register' %}" novalidate>
+                        {% csrf_token %}
+                        <div id="formErrorAlert" class="alert alert-danger d-none py-2 px-3 small rounded-3 mb-3" role="alert">
+                            <i class="fa-solid fa-circle-exclamation me-2"></i><span id="formErrorText">Please correct the errors below before submitting.</span>
+                            
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_fullname" class="form-label small fw-medium text-light">Full Name</label>
+                            <div class="input-group ev-input-group rounded-3">
+                                <span class="input-group-text bg-transparent border-end-0 text-muted ps-3">
+                                    <i class="fa-regular fa-user"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control bg-transparent border-start-0 text-white shadow-none ps-2" 
+                                       id="id_fullname" 
+                                       name="fullname" 
+                                       placeholder="Enter your full name" 
+                                       required 
+                                       autocomplete="name">
+                            </div>
+                            <div class="invalid-feedback small mt-1" id="nameError">Please enter your full name.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_mobile" class="form-label small fw-medium text-light">Mobile Number</label>
+                            <div class="input-group ev-input-group rounded-3">
+                                <span class="input-group-text bg-transparent border-end-0 text-muted ps-3 fw-medium small">
+                                    +91
+                                </span>
+                                <input type="tel" 
+                                       class="form-control bg-transparent border-start-0 text-white shadow-none ps-2" 
+                                       id="id_mobile" 
+                                       name="mobile" 
+                                       placeholder="Enter your mobile number" 
+                                       maxlength="10"
+                                       required 
+                                       autocomplete="tel">
+                            </div>
+                            <div class="invalid-feedback small mt-1" id="mobileError">Please enter a valid mobile number.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_email" class="form-label small fw-medium text-light">Email Address</label>
+                            <div class="input-group ev-input-group rounded-3">
+                                <span class="input-group-text bg-transparent border-end-0 text-muted ps-3">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </span>
+                                <input type="email" 
+                                       class="form-control bg-transparent border-start-0 text-white shadow-none ps-2" 
+                                       id="id_email" 
+                                       name="email" 
+                                       placeholder="Enter your email address" 
+                                       required 
+                                       autocomplete="email">
+                            </div>
+                            <div class="invalid-feedback small mt-1" id="emailError">Please enter a valid email address.</div>
+                            {% if message %}
+                                <div class="alert alert-danger small mt-2 rounded-3">
+                                    <i class="fa-solid fa-circle-exclamation me-2"></i>
+                                    {{ message }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="id_password" class="form-label small fw-medium text-light">Create Password</label>
+                            <div class="input-group ev-input-group rounded-3">
+                                <span class="input-group-text bg-transparent border-end-0 text-muted ps-3">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <input type="password" 
+                                       class="form-control bg-transparent border-start-0 border-end-0 text-white shadow-none px-2" 
+                                       id="id_password" 
+                                       name="password" 
+                                       placeholder="Create a strong password" 
+                                       required 
+                                       autocomplete="new-password">
+                                <button class="btn btn-outline-secondary border-start-0 bg-transparent text-muted pe-3 password-toggle-btn shadow-none" 
+                                        type="button" 
+                                        id="togglePassword" 
+                                        aria-label="Toggle password visibility">
+                                    <i class="fa-regular fa-eye" id="togglePasswordIcon"></i>
+                                </button>
+                            </div>
+                            <div class="ev-strength-meter mt-2">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="text-muted extra-small">Password strength</span>
+                                    <span id="strengthText" class="extra-small text-secondary fw-semibold">Weak</span>
+                                </div>
+                                <div class="progress" style="height: 4px; background-color: rgba(255,255,255,0.05);">
+                                    <div id="strengthBar" class="progress-bar transition-all" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="text-muted extra-small mt-1">
+                                Min 8 chars, 1 uppercase, 1 lowercase, 1 number.
+                            </div>
+                            <div class="invalid-feedback small mt-1" id="passwordError">Password does not meet requirements.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_confirm_password" class="form-label small fw-medium text-light">Confirm Password</label>
+                            <div class="input-group ev-input-group rounded-3">
+                                <span class="input-group-text bg-transparent border-end-0 text-muted ps-3">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <input type="password" 
+                                       class="form-control bg-transparent border-start-0 border-end-0 text-white shadow-none px-2" 
+                                       id="id_confirm_password" 
+                                       name="confirm_password" 
+                                       placeholder="Re-enter your password" 
+                                       required 
+                                       autocomplete="new-password">
+                                <button class="btn btn-outline-secondary border-start-0 bg-transparent text-muted pe-3 password-toggle-btn shadow-none" 
+                                        type="button" 
+                                        id="toggleConfirmPassword" 
+                                        aria-label="Toggle confirm password visibility">
+                                    <i class="fa-regular fa-eye" id="toggleConfirmPasswordIcon"></i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback small mt-1" id="confirmPasswordError">Passwords do not match.</div>
+                        </div>
+
+                        <div class="mb-4 small">
+                            <div class="form-check">
+                                <input class="form-check-input ev-checkbox shadow-none" type="checkbox" value="agreed" id="id_terms" name="terms_agreed" required>
+                                <label class="form-check-label text-secondary user-select-none" for="id_terms">
+                                    I agree to the <a href="" class="ev-link text-decoration-none">Terms & Conditions</a> and <a href="" class="ev-link text-decoration-none">Privacy Policy</a>.
+                                </label>
+                            </div>
+                            <div class="invalid-feedback small mt-1" id="termsError">You must agree to the terms and privacy policy.</div>
+                        </div>
+
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn ev-btn-primary fw-semibold py-2 rounded-3 shadow-sm position-relative overflow-hidden" id="registerSubmitBtn">
+                                <span class="btn-text">Create Account</span>
+                                <span class="btn-spinner d-none">
+                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                    Creating Account...
+                                </span>
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-secondary small mb-0">
+                                Already have an account? 
+                                <a href="/login" class="ev-link fw-semibold text-decoration-none ms-1">Login</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/registerjs.js' %}"></script>
+</body>
+</html>

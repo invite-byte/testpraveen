@@ -1,0 +1,751 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVoltParts // About — The Component Intelligence Platform</title>
+    
+    <!-- Google Fonts: Inter & JetBrains Mono for Engineering/Editorial Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/aboutcss.css' %}">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark ev-navbar sticky-top shadow-sm">
+
+        <div class="container">
+
+            <!-- LOGO -->
+
+            <a class="navbar-brand d-inline-flex align-items-center"
+                href="/">
+
+                <div class="ev-logo-icon me-2">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+
+                <span class="fs-4 fw-bold tracking-tight text-white">
+                    EVolt<span class="text-accent">Parts</span>
+                </span>
+
+            </a>
+
+
+            <!-- MOBILE TOGGLE -->
+
+            <button class="navbar-toggler border-0 shadow-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#evNavbarContent"
+                aria-controls="evNavbarContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="collapse navbar-collapse"
+                id="evNavbarContent">
+
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
+
+                    <!-- HOME -->
+
+                    <li class="nav-item">
+
+                        <a class="nav-link active fw-medium"
+                            href="/">
+                            Home
+                        </a>
+
+                    </li>
+
+
+                    <!-- SPARE PARTS -->
+
+                    <li class="nav-item">
+
+                        <a class="nav-link fw-medium"
+                            href="{% url 'allproduct' name=name %}">
+                            Spare Parts
+                        </a>
+
+                    </li>
+
+                    <!-- ABOUT -->
+
+                    <li class="nav-item">
+
+                        <a class="nav-link fw-medium"
+                            href="{% url 'about' %}">
+
+                            About
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- CONTACT -->
+
+                    <li class="nav-item">
+
+                        <a class="nav-link fw-medium"
+                            href="/contact/">
+
+                            Contact
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+
+                <!-- =====================================================
+                     PROFILE
+                ====================================================== -->
+
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+
+                    <div class="profile-wrapper">
+
+
+                        <!-- PROFILE BUTTON -->
+
+                        <button type="button"
+                            class="profile-avatar-btn"
+                            id="profileAvatarBtn"
+                            aria-label="Open profile"
+                            aria-expanded="false">
+
+                            {{ name|first|upper }}
+
+                        </button>
+
+
+                        <!-- PROFILE DROPDOWN -->
+
+                        <div class="profile-dropdown"
+                            id="profileDropdown">
+
+
+                            <!-- USER INFORMATION -->
+
+                            <div class="profile-user">
+
+                                <div class="profile-avatar-large">
+
+                                    {{ name|first|upper }}
+
+                                </div>
+
+
+                                <div class="profile-user-info">
+
+                                    <span class="profile-welcome">
+                                        Welcome back
+                                    </span>
+
+                                    <strong>
+                                        {{ name }}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-divider"></div>
+
+
+                            <!-- MY PROFILE -->
+
+                            <a href="{% url 'profile'%}">
+                                <i class="fa-regular fa-user"></i>
+                                My Profile
+                            </a>
+
+
+                            <!-- MY GARAGE -->
+
+                            <a href="/garage/"
+                                class="profile-menu-item">
+
+                                <span class="profile-menu-icon">
+
+                                    <i class="fa-solid fa-motorcycle"></i>
+
+                                </span>
+
+                                <span>
+                                    My Garage
+                                </span>
+
+                            </a>
+
+
+                            <!-- WISHLIST -->
+
+                            <a href="/wishlist/"
+                                class="profile-menu-item">
+
+                                <span class="profile-menu-icon">
+
+                                    <i class="fa-regular fa-heart"></i>
+
+                                </span>
+
+                                <span>
+                                    Wishlist
+                                </span>
+
+                            </a>
+
+
+                            <!-- CART -->
+
+                            <a href="{% url 'cart' name=name %}"
+                                class="profile-menu-item">
+
+                                <span class="profile-menu-icon">
+
+                                    <i class="fa-solid fa-cart-shopping"></i>
+
+                                </span>
+
+                                <span>
+                                    My Cart
+                                </span>
+
+                            </a>
+
+
+                            <div class="profile-divider"></div>
+
+
+                            <!-- LOGOUT -->
+
+                            <a href="{% url 'login' %}"
+                                class="profile-menu-item profile-logout">
+
+                                <span class="profile-menu-icon">
+
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                                </span>
+
+                                <span>
+                                    Logout
+                                </span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <header class="ev-hero-section">
+        <div class="container-fluid px-4 px-lg-5 h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-lg-7 py-5">
+                    <div class="technical-label mb-3">
+                        <span>EVOLT PARTS</span> / <span class="text-accent">SYSTEM 01</span>
+                    </div>
+                    <h1 class="hero-title">
+                        THE PART<br>
+                        BEHIND<br>
+                        THE RIDE.
+                    </h1>
+                    <p class="hero-desc mt-4">
+                        Electric vehicles are more than motors and batteries. Every ride depends on hundreds of individual components working together with absolute precision.
+                    </p>
+                    <div class="hero-actions mt-5 d-flex flex-wrap gap-4 align-items-center">
+                        <a href="#system-breakdown" class="btn-ev-primary">
+                            EXPLORE THE SYSTEM <i class="fa-solid fa-arrow-down ms-2"></i>
+                        </a>
+                        <a href="#compatibility-section" class="btn-ev-text">
+                            DISCOVER COMPATIBILITY
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 d-none d-lg-block position-relative">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80" alt="EV Component Architecture" class="img-fluid editorial-img">
+                        <!-- Technical Overlay Pins -->
+                        <div class="tech-pin pin-1">EV SYSTEM</div>
+                        <div class="tech-pin pin-2">COMPONENT</div>
+                        <div class="tech-pin pin-3">COMPATIBILITY</div>
+                        <div class="tech-pin pin-4">PRECISION</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bottom-bar">
+            <span>SYS_ID: 0x992B</span>
+            <span>STATUS: OPERATIONAL</span>
+            <span>PLATFORM: EV_TWO_WHEELER</span>
+        </div>
+    </header>
+
+    <!-- ================= SECTION 02: THE VEHICLE IS THE SYSTEM ================= -->
+    <section id="system-breakdown" class="ev-section border-top-thin">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="technical-label">SECTION 02 / ARCHITECTURE</div>
+                    <h2 class="section-headline">A VEHICLE IS<br>MORE THAN A VEHICLE.</h2>
+                </div>
+            </div>
+            
+            <div class="row g-0 system-interactive-grid">
+                <div class="col-lg-7">
+                    <div class="system-list">
+                        <div class="system-item active" data-index="0" data-img="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80">
+                            <span class="sys-num">01 / MOTOR</span>
+                            <span class="sys-title">Electric Hub & Mid-Drive Motors</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                        <div class="system-item" data-index="1" data-img="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+                            <span class="sys-num">02 / CONTROL</span>
+                            <span class="sys-title">Motor Controllers & Logic Units</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                        <div class="system-item" data-index="2" data-img="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80">
+                            <span class="sys-num">03 / POWER</span>
+                            <span class="sys-title">Battery Packs & Management Systems</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                        <div class="system-item" data-index="3" data-img="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80">
+                            <span class="sys-num">04 / BRAKING</span>
+                            <span class="sys-title">Hydraulic Calipers, Discs & Pads</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                        <div class="system-item" data-index="4" data-img="https://images.unsplash.com/photo-1558980664-3a031cf67ea8?auto=format&fit=crop&w=800&q=80">
+                            <span class="sys-num">05 / MOTION</span>
+                            <span class="sys-title">Suspension & Structural Chassis</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                        <div class="system-item" data-index="5" data-img="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80">
+                            <span class="sys-num">06 / LIGHTING</span>
+                            <span class="sys-title">LED Headlights & Indicators</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 position-relative d-none d-lg-flex align-items-center justify-content-center">
+                    <div class="system-image-preview">
+                        <img id="active-sys-img" src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80" alt="System Component" class="img-fluid">
+                        <div class="preview-meta-tag">LIVE DIAGNOSTIC FEED // 01</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 03: THE EVOLT APPROACH ================= -->
+    <section class="ev-section bg-mint-light border-top-thin">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="technical-label">SECTION 03 / METHODOLOGY</div>
+                    <h2 class="section-headline">WE DON'T START<br>WITH THE PART.</h2>
+                    <p class="section-subtext mt-3">
+                        WE START WITH THE VEHICLE. Universal guesswork leads to downtime. Our intelligence matrix connects engineering specifications directly to your exact model.
+                    </p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="workflow-stack">
+                        <div class="workflow-node">
+                            <span class="node-level">01</span>
+                            <span class="node-name">VEHICLE BRAND</span>
+                        </div>
+                        <div class="workflow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="workflow-node">
+                            <span class="node-level">02</span>
+                            <span class="node-name">VEHICLE MODEL</span>
+                        </div>
+                        <div class="workflow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="workflow-node">
+                            <span class="node-level">03</span>
+                            <span class="node-name">SYSTEM CATEGORY</span>
+                        </div>
+                        <div class="workflow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="workflow-node">
+                            <span class="node-level">04</span>
+                            <span class="node-name">SPECIFIC COMPONENT</span>
+                        </div>
+                        <div class="workflow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="workflow-node highlight">
+                            <span class="node-level">05</span>
+                            <span class="node-name">VERIFIED COMPATIBLE PART</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 04: COMPONENT ARCHIVE ================= -->
+    <section class="ev-section border-top-thin">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row mb-5 justify-content-between align-items-end">
+                <div class="col-lg-8">
+                    <div class="technical-label">SECTION 04 / REPOSITORY</div>
+                    <h2 class="section-headline">THE COMPONENT<br>ARCHIVE.</h2>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <span class="mono-counter">TOTAL CATEGORIES: 08 // CATALOGUE VERIFIED</span>
+                </div>
+            </div>
+
+            <div class="archive-editorial-grid">
+                <div class="archive-tile tile-large">
+                    <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1000&q=80" alt="Braking Systems">
+                    <div class="tile-overlay">
+                        <span class="tile-index">01</span>
+                        <h3>Braking Systems</h3>
+                        <p>Pads, discs, master cylinders & hydraulic lines.</p>
+                    </div>
+                </div>
+                <div class="archive-tile tile-small">
+                    <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80" alt="Motor & Drive">
+                    <div class="tile-overlay">
+                        <span class="tile-index">02</span>
+                        <h3>Motor & Drive</h3>
+                        <p>Hub motors, rotors, bearings.</p>
+                    </div>
+                </div>
+                <div class="archive-tile tile-small">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Controllers">
+                    <div class="tile-overlay">
+                        <span class="tile-index">03</span>
+                        <h3>Electrical Controls</h3>
+                        <p>Controllers, throttles, sensors.</p>
+                    </div>
+                </div>
+                <div class="archive-tile tile-large">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1000&q=80" alt="Chargers">
+                    <div class="tile-overlay">
+                        <span class="tile-index">04</span>
+                        <h3>Chargers & Power</h3>
+                        <p>Fast chargers, connectors, wiring harnesses.</p>
+                    </div>
+                </div>
+                <div class="archive-tile tile-small">
+                    <img src="https://images.unsplash.com/photo-1558980664-3a031cf67ea8?auto=format&fit=crop&w=800&q=80" alt="Suspension">
+                    <div class="tile-overlay">
+                        <span class="tile-index">05</span>
+                        <h3>Suspension</h3>
+                        <p>Fork assemblies, rear mono-shocks.</p>
+                    </div>
+                </div>
+                <div class="archive-tile tile-small">
+                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80" alt="Lighting">
+                    <div class="tile-overlay">
+                        <span class="tile-index">06</span>
+                        <h3>Lighting & Indicators</h3>
+                        <p>LED headlamps, DRL units, switchgear.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 05: VEHICLE ECOSYSTEM ================= -->
+    <section class="ev-section bg-white border-top-thin">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="technical-label">SECTION 05 / COMPATIBILITY DATABASE</div>
+                    <h2 class="section-headline">BUILT FOR THE<br>ELECTRIC TWO-WHEELER.</h2>
+                </div>
+            </div>
+
+            <div class="row g-4 ecosystem-grid">
+                <!-- Ather -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="eco-card">
+                        <span class="eco-brand-title">ATHER</span>
+                        <ul class="eco-model-list">
+                            <li>450X</li>
+                            <li>450S</li>
+                            <li>RIZTA</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Ola Electric -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="eco-card">
+                        <span class="eco-brand-title">OLA ELECTRIC</span>
+                        <ul class="eco-model-list">
+                            <li>S1 PRO</li>
+                            <li>S1 AIR</li>
+                            <li>S1X</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- TVS -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="eco-card">
+                        <span class="eco-brand-title">TVS</span>
+                        <ul class="eco-model-list">
+                            <li>iQUBE</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Bajaj -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="eco-card">
+                        <span class="eco-brand-title">BAJAJ</span>
+                        <ul class="eco-model-list">
+                            <li>CHETAK</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Vida -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="eco-card">
+                        <span class="eco-brand-title">VIDA</span>
+                        <ul class="eco-model-list">
+                            <li>V1</li>
+                            <li>V2</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Simple Energy -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="eco-card">
+                        <span class="eco-brand-title">SIMPLE ENERGY</span>
+                        <ul class="eco-model-list">
+                            <li>SIMPLE ONE</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Hero Electric -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="eco-card">
+                        <span class="eco-brand-title">HERO ELECTRIC</span>
+                        <ul class="eco-model-list">
+                            <li>OPTIMA</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Okinawa -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="eco-card">
+                        <span class="eco-brand-title">OKINAWA</span>
+                        <ul class="eco-model-list">
+                            <li>PRAISE</li>
+                            <li>OKHI90</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 06: COMPATIBILITY ================= -->
+    <section id="compatibility-section" class="ev-section border-top-thin">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="technical-label">SECTION 06 / VERIFICATION PROTOCOL</div>
+                    <h2 class="section-headline">THE RIGHT PART<br>ISN'T ENOUGH.</h2>
+                    <h3 class="section-sub-headline mt-2">IT HAS TO BE THE RIGHT PART FOR YOUR VEHICLE.</h3>
+                    <p class="section-subtext mt-3">
+                        Every component listed on EVoltParts undergoes rigorous dimensional and electronic compatibility checks against manufacturer baseline specs.
+                    </p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="diagnostic-panel">
+                        <div class="diag-header">
+                            <span>DIAGNOSTIC MATRIX // v4.2</span>
+                            <span class="status-live"><span class="pulse-dot"></span> SECURE</span>
+                        </div>
+                        <div class="diag-body">
+                            <div class="diag-row">
+                                <span class="diag-key">VEHICLE</span>
+                                <span class="diag-val">ATHER 450X</span>
+                            </div>
+                            <div class="diag-row">
+                                <span class="diag-key">SYSTEM</span>
+                                <span class="diag-val">BRAKING SYSTEMS</span>
+                            </div>
+                            <div class="diag-row">
+                                <span class="diag-key">CATEGORY</span>
+                                <span class="diag-val">BRAKE PAD ASSEMBLY</span>
+                            </div>
+                            <div class="diag-row">
+                                <span class="diag-key">BRAND</span>
+                                <span class="diag-val">OEM SPECIFIED</span>
+                            </div>
+                            <div class="diag-row border-0">
+                                <span class="diag-key">STATUS</span>
+                                <span class="diag-val text-green-success fw-bold"><i class="fa-solid fa-circle-check me-1"></i> COMPATIBLE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 07: THE ENGINEERING WALL ================= -->
+    <section class="ev-section bg-mint-light border-top-thin">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="technical-label">SECTION 07 / INFRASTRUCTURE</div>
+                    <h2 class="section-headline">THE ENGINEERING WALL.</h2>
+                </div>
+            </div>
+
+            <div class="row g-4 engineering-wall">
+                <div class="col-md-4">
+                    <div class="spec-card">
+                        <span class="spec-category">BACKEND</span>
+                        <span class="spec-tech">PYTHON / DJANGO</span>
+                        <span class="spec-desc">Robust server-side architecture handling instantaneous inventory lookups.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="spec-card">
+                        <span class="spec-category">DATABASE</span>
+                        <span class="spec-tech">MYSQL</span>
+                        <span class="spec-desc">Structured relational data mapping precise vehicle parts to exact serial models.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="spec-card">
+                        <span class="spec-category">FRONTEND</span>
+                        <span class="spec-tech">HTML / CSS / JS</span>
+                        <span class="spec-desc">Clean, high-performance interface with zero bloated frameworks.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="spec-card">
+                        <span class="spec-category">FRAMEWORK</span>
+                        <span class="spec-tech">BOOTSTRAP 5.3</span>
+                        <span class="spec-desc">Responsive grid system tailored for precise automotive alignment.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="spec-card">
+                        <span class="spec-category">API</span>
+                        <span class="spec-tech">REST API</span>
+                        <span class="spec-desc">Seamless communication channels for component filtering and search.</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="spec-card">
+                        <span class="spec-category">VERSION CONTROL</span>
+                        <span class="spec-tech">GIT / GITHUB</span>
+                        <span class="spec-desc">Continuous deployment and secure source tracking across all builds.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 08: DESIGN DETAIL (METADATA STRIP) ================= -->
+    <div class="metadata-strip border-top-thin border-bottom-thin py-3">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mono-meta-text gap-3">
+                <span>EVOLT / 01</span>
+                <span>COMPONENT SYSTEM</span>
+                <span>VEHICLE COMPATIBILITY</span>
+                <span>ENGINEERING DATABASE</span>
+                <span>ELECTRIC MOBILITY</span>
+                <span>SYSTEM / 04</span>
+                <span>PART / 0021</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SECTION 09: FULL-WIDTH STATEMENT ================= -->
+    <section class="ev-section-large text-center border-bottom-thin">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="technical-label mb-3">SECTION 09 / SCALE & METRICS</div>
+                    <div class="huge-statement-wrapper">
+                        <span class="huge-number">15,000+</span>
+                        <h2 class="huge-label">PARTS BUILT AROUND ELECTRIC MOBILITY.</h2>
+                    </div>
+                    <div class="row mt-5 pt-4 border-top-thin justify-content-center text-center">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <span class="stat-highlight">45+</span>
+                            <span class="stat-sub d-block">EV BRANDS SUPPORTED</span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="stat-highlight">100%</span>
+                            <span class="stat-sub d-block">COMPATIBILITY FOCUSED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 10: FINAL CTA ================= -->
+    <section class="ev-section-fullscreen d-flex align-items-center position-relative">
+        <div class="container-fluid px-4 px-lg-5 text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="technical-label mb-4">EVOLT PARTS / SYSTEM COMPLETE</div>
+                    <h2 class="cta-headline">
+                        FIND THE<br>
+                        RIGHT PART.
+                    </h2>
+                    <h3 class="cta-subheadline mt-3">KEEP RIDING.</h3>
+                    
+                    <div class="mt-5 d-flex flex-wrap justify-content-center gap-4 align-items-center">
+                        <a href="#" class="btn-ev-primary-large">
+                            EXPLORE SPARE PARTS <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                        <a href="{% url 'home' name=name %}" class="btn-ev-text-large">
+                            BACK TO HOME
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cta-bottom-bar">
+            <span>© 2026 EVOLTPARTS. ALL RIGHTS RESERVED.</span>
+            <span>SECURE PLATFORM</span>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{% static 'js/aboutjs.js' %}"></script>
+</body>
+</html>

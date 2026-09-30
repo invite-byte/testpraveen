@@ -1,0 +1,726 @@
+
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controller Parts — EVoltParts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/allproductcss.css' %}">
+    
+    <style>
+        :root {
+            --ev-deep-forest: #1b4332;
+            --ev-emerald: #2d6a4f;
+            --ev-medium-green: #40916c;
+            --ev-soft-mint: #e8f5e9;
+            --ev-very-light-green: #f4f9f4;
+            --ev-mint-border: #c8e6c9;
+            --ev-card-bg: #ffffff;
+            --ev-charcoal: #212529;
+            --ev-text-muted: #6c757d;
+            --ev-border: #e9ecef;
+            --ev-shadow: 0 4px 16px rgba(45, 106, 79, 0.06);
+            --ev-transition: all 0.25s ease-in-out;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ev-very-light-green);
+            color: var(--ev-charcoal);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Typography & Custom Utilities */
+        .text-emerald { color: var(--ev-emerald) !important; }
+        .bg-soft-mint { background-color: var(--ev-soft-mint) !important; }
+        .border-mint { border-color: var(--ev-mint-border) !important; }
+        
+        /* Navbar */
+        .ev-navbar {
+            background-color: var(--ev-deep-forest);
+            border-bottom: 2px solid var(--ev-emerald);
+            padding: 0.85rem 1rem;
+        }
+        .ev-navbar .nav-link {
+            color: #d8f3dc !important;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            transition: var(--ev-transition);
+        }
+        .ev-navbar .nav-link:hover, .ev-navbar .nav-link.active {
+            color: #ffffff !important;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        /* Popular Category Pills */
+        .ev-quick-pill {
+            background-color: var(--ev-card-bg);
+            border: 1px solid var(--ev-mint-border);
+            color: var(--ev-emerald);
+            padding: 0.55rem 1.25rem;
+            border-radius: 50rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--ev-transition);
+            white-space: nowrap;
+            display: inline-block;
+            box-shadow: 0 2px 6px rgba(45, 106, 79, 0.04);
+        }
+        .ev-quick-pill:hover {
+            background-color: var(--ev-emerald);
+            color: #ffffff;
+            border-color: var(--ev-emerald);
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.15);
+            transform: translateY(-1px);
+        }
+        .ev-quick-pill-page{
+            padding: 0.55rem 1.25rem;
+            border-radius: 50rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--ev-transition);
+            white-space: nowrap;
+            display: inline-block;
+            background-color: var(--ev-emerald);
+            color: #ffffff;
+            border-color: var(--ev-emerald);
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.15);
+        }
+
+        /* Product Cards */
+        .ev-product-card {
+            background-color: var(--ev-card-bg);
+            border: 1px solid var(--ev-border);
+            border-radius: 14px;
+            transition: var(--ev-transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--ev-shadow);
+        }
+        .ev-product-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--ev-mint-border);
+            box-shadow: 0 12px 28px rgba(45, 106, 79, 0.12);
+        }
+        .ev-img-container {
+            height: 190px;
+            background-color: var(--ev-very-light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid var(--ev-border);
+        }
+        .ev-badge-category {
+            background-color: var(--ev-soft-mint);
+            color: var(--ev-deep-forest);
+            border: 1px solid var(--ev-mint-border);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        /* Buttons & Actions */
+        .btn-ev-primary {
+            background-color: var(--ev-emerald);
+            color: #ffffff;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            transition: var(--ev-transition);
+        }
+        .btn-ev-primary:hover {
+            background-color: var(--ev-deep-forest);
+            color: #ffffff;
+        }
+        .btn-ev-outline {
+            border: 1px solid var(--ev-mint-border);
+            color: var(--ev-emerald);
+            font-weight: 600;
+            background: var(--ev-card-bg);
+            border-radius: 8px;
+            transition: var(--ev-transition);
+        }
+        .btn-ev-outline:hover {
+            background-color: var(--ev-soft-mint);
+            border-color: var(--ev-emerald);
+            color: var(--ev-deep-forest);
+        }
+
+        /* Search input styling */
+        .ev-search-bar input:focus {
+            box-shadow: none;
+            border-color: var(--ev-emerald);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg ev-navbar sticky-top">
+
+    <div class="container-fluid container-xxl">
+
+
+        <!-- BRAND -->
+
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white fw-bold fs-4"
+           href="{% url 'home' name=name %}">
+
+            <i class="fa-solid fa-bolt ev-brand-icon"></i>
+
+            <span>
+                EVolt<span class="text-success">Parts</span>
+            </span>
+
+        </a>
+
+
+        <!-- MOBILE TOGGLE -->
+
+        <button class="navbar-toggler border-0 text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="collapse navbar-collapse justify-content-between"
+             id="mainNavbar">
+
+
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{% url 'home' name=name %}">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="{% url 'allproduct' name=name %}">
+
+                        Spare Parts
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{% url 'viewallcategory' name=name %}">
+
+                        Categories
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#">
+
+                        My Garage
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#">
+
+                        Orders
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- NAV ACTIONS -->
+
+            <div class="d-flex align-items-center gap-2">
+
+
+                <!-- WISHLIST -->
+
+                <a href="{% url 'wishlist' name=name %}"
+                   class="navbar-action"
+                   title="Wishlist"
+                   aria-label="Wishlist">
+
+                    <i class="fa-regular fa-heart fs-5"></i>
+
+                </a>
+
+
+                <!-- CART -->
+
+                <a href="{% url 'cart' name=name %}"
+                   class="navbar-action position-relative"
+                   title="Cart"
+                   aria-label="Cart">
+
+                    <i class="fa-solid fa-cart-shopping fs-5"></i>
+
+                    {% if cart_count %}
+
+                        <span class="cart-badge">
+                            {{ cart_count }}
+                        </span>
+
+                    {% endif %}
+
+                </a>
+
+
+                <!-- PROFILE -->
+
+                <div class="profile-wrapper">
+
+
+                    <button type="button"
+                            class="profile-avatar-btn"
+                            id="profileAvatarBtn"
+                            aria-label="Open profile"
+                            aria-expanded="false">
+
+                        {{ name|first|upper }}
+
+                    </button>
+
+
+                    <div class="profile-dropdown"
+                         id="profileDropdown">
+
+
+                        <div class="profile-user">
+
+                            <div class="profile-avatar-large">
+
+                                {{ name|first|upper }}
+
+                            </div>
+
+
+                            <div class="profile-user-info">
+
+                                <span class="profile-welcome">
+                                    Welcome back
+                                </span>
+
+                                <strong>
+                                    {{ name }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-divider"></div>
+
+
+                        <a href="{% url 'profile' %}"
+                           class="profile-menu-item">
+
+                            <span class="profile-menu-icon">
+
+                                <i class="fa-regular fa-user"></i>
+
+                            </span>
+
+                            <span>
+                                My Profile
+                            </span>
+
+                        </a>
+
+
+                        <a href="#"
+                           class="profile-menu-item">
+
+                            <span class="profile-menu-icon">
+
+                                <i class="fa-solid fa-motorcycle"></i>
+
+                            </span>
+
+                            <span>
+                                My Garage
+                            </span>
+
+                        </a>
+
+
+                        <a href="{% url 'wishlist' name=name %}"
+                            class="profile-menu-item">
+
+                                <span class="profile-menu-icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </span>
+
+                                <span>
+                                    Wishlist
+                                </span>
+
+                        </a>
+
+
+                        <a href="{% url 'cart' name=name %}"
+                           class="profile-menu-item">
+
+                            <span class="profile-menu-icon">
+
+                                <i class="fa-solid fa-cart-shopping"></i>
+
+                            </span>
+
+                            <span>
+                                My Cart
+                            </span>
+
+                        </a>
+
+
+                        <div class="profile-divider"></div>
+
+
+                        <a href="{% url 'login' %}"
+                           class="profile-menu-item profile-logout">
+
+                            <span class="profile-menu-icon">
+
+                                <i class="fa-solid fa-right-from-bracket"></i>
+
+                            </span>
+
+                            <span>
+                                Logout
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+    <main class="container-xxl py-4">
+
+        <header class="mb-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-2 text-muted" style="font-size: 0.85rem;">
+                    <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none">Spare Parts</a></li>
+                    <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">All Products</li>
+                </ol>
+            </nav>
+            <h1 class="fw-bold mb-1 display-6 text-dark">All Spare Parts</h1>
+            <p class="text-muted mb-0">“Find the right spare parts and accessories for your electric two-wheeler.”</p>
+        </header>
+
+        <!-- <section class="mb-4">
+            <div class="row g-2 align-items-center">
+                <div class="col-lg-10 col-md-9">
+                    <div class="input-group input-group-lg shadow-sm ev-search-bar">
+                        <span class="input-group-text bg-white border-end-0 text-muted ps-3 rounded-start-3"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control border-start-0 ps-0 fs-6 bg-white" placeholder="Search spare parts, products or part numbers...">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <button class="btn btn-ev-outline btn-lg w-100 d-flex align-items-center justify-content-center gap-2 shadow-sm" type="button">
+                        <i class="fa-solid fa-filter text-emerald"></i> Filters
+                    </button>
+                </div>
+            </div>
+        </section> -->
+
+        <section class="mb-5 overflow-x-auto pb-2">
+            <div class="d-flex gap-2 align-items-center flex-nowrap">
+                <span class="text-emerald small fw-bold me-2 d-flex align-items-center gap-1 text-nowrap">
+                    <i class="fa-solid fa-bolt"></i> Popular:
+                </span>
+                <a href="{% url 'allproduct' name=name %}" class="ev-quick-pill">All</a>
+                <a href="{% url 'productbreak' name=name %}" class="ev-quick-pill">Brake Pads</a>
+                <a href="{% url 'productcharge' name=name %}" class="ev-quick-pill">Chargers</a>
+                <a href="{% url 'productcontroller' name=name %}" class="ev-quick-pill-page">Controllers</a>
+                <a href="{% url 'producttyre' name=name %}" class="ev-quick-pill">Tyres</a>
+                <a href="{% url 'productmotor' name=name %}" class="ev-quick-pill">Motors</a>
+                <a href="{% url 'productsuspension' name=name %}" class="ev-quick-pill">Suspensions</a>
+                <a href="{% url 'productlight' name=name %}" class="ev-quick-pill">Lights</a>
+                <a href="{% url 'productwiring' name=name %}" class="ev-quick-pill">Wiring</a>
+                <a href="{% url 'productaccessories' name=name %}" class="ev-quick-pill">Accessories</a>
+            </div>
+        </section>
+
+        {% if Datas %}
+
+        <section class="mb-5">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+
+                {% for data in Datas %}
+
+                <div class="col">
+                    <div class="ev-product-card">
+
+                        <!-- Product Image -->
+                        <div class="ev-img-container">
+
+                            {% if data.Image_url %}
+                                <img src="{{ data.Image_url }}"
+                                    alt="{{ data.Product_name }}"
+                                    class="img-fluid"
+                                    style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                            {% else %}
+                                <i class="fa-solid fa-box-open text-emerald fs-1 opacity-75"></i>
+                            {% endif %}
+
+                            <!-- Category -->
+                            {% if data.Category %}
+                                <span class="position-absolute top-0 start-0 m-2 ev-badge-category">
+                                    {{ data.Category }}
+                                </span>
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- Product Information -->
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+
+                            <!-- Product Name -->
+                            <h5 class="fw-bold text-dark fs-6 mb-2">
+                                {{ data.Product_name }}
+                            </h5>
+
+
+                            <!-- Compatible Vehicle -->
+                            {% if data.Vehichel_name %}
+                            <div class="mb-3">
+                                <span class="text-muted small">
+                                    <i class="fa-solid fa-motorcycle me-1 text-emerald"></i>
+                                    {{ data.Vehichel_name }}
+                                </span>
+                            </div>
+                            {% endif %}
+
+
+                            <!-- Price -->
+                            <div class="d-flex align-items-baseline gap-2 mb-3">
+
+                                {% if data.Discount_price %}
+                                    <span class="fw-bold fs-5 text-dark">
+                                        {{ data.Discount_price }}
+                                    </span>
+
+                                    {% if data.Price %}
+                                        <span class="text-muted text-decoration-line-through small">
+                                            {{ data.Price }}
+                                        </span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="fw-bold fs-5 text-dark">
+                                        {{ data.Price }}
+                                    </span>
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- Stock -->
+                            {% if data.Stock_availability %}
+                                {% if data.Stock_availability == "In Stock" %}
+
+                                    <div class="small fw-semibold text-success mb-3">
+                                        <i class="fa-solid fa-circle-check me-1"></i>
+                                        In Stock
+                                    </div>
+
+                                {% else %}
+
+                                    <div class="small fw-semibold text-danger mb-3">
+                                        <i class="fa-solid fa-circle-xmark me-1"></i>
+                                        {{ data.Stock_availability }}
+                                    </div>
+
+                                {% endif %}
+                            {% endif %}
+
+
+                            <!-- Buttons -->
+                            <div class="d-flex gap-2 mt-auto">
+
+                                <a href="#"
+                                class="btn btn-ev-outline btn-sm flex-grow-1 py-2">
+                                    View Details
+                                </a>
+
+                                <button type="button"
+                                        class="btn btn-ev-primary btn-sm px-3 py-2"
+                                        title="Add to Cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </section>
+
+        {% else %}
+
+        <section class="py-5 text-center">
+
+            <div class="mb-3">
+                <i class="fa-solid fa-box-open text-emerald"
+                style="font-size: 3rem;"></i>
+            </div>
+
+            <h4 class="fw-bold text-dark">
+                No Spare Parts Available
+            </h4>
+
+            <p class="text-muted mb-0">
+                There are currently no spare parts available.
+            </p>
+
+        </section>
+
+        {% endif %}
+
+
+    </main>
+
+
+<footer class="py-4 text-center text-muted small bg-white border-top">
+        <div class="container">
+            <p class="mb-0">© 2026 EVoltParts. Specialized Electric Two-Wheeler Spare Parts & Accessories Platform (No complete vehicles sold).</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       PROFILE DROPDOWN
+    ===================================================== */
+
+    const profileButton =
+        document.getElementById("profileAvatarBtn");
+
+    const profileDropdown =
+        document.getElementById("profileDropdown");
+
+
+    if (profileButton && profileDropdown) {
+
+
+        profileButton.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            const isOpen =
+                profileDropdown.classList.contains("show");
+
+
+            if (isOpen) {
+
+                profileDropdown.classList.remove("show");
+
+                profileButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            } else {
+
+                profileDropdown.classList.add("show");
+
+                profileButton.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+            }
+
+        });
+
+
+        document.addEventListener("click", function () {
+
+            profileDropdown.classList.remove("show");
+
+            profileButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        });
+
+
+        profileDropdown.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopPropagation();
+
+            }
+        );
+
+    }
+
+    });
+</script>
+</body>
+</html>

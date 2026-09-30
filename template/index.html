@@ -1,0 +1,613 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVoltParts — Powering Every Ride. Specialized E-Bike Spare Parts & Components.</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/landingpagecss.css' %}">
+</head>
+<body class="ev-body">
+
+    <!-- 3. NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark ev-navbar sticky-top">
+        <div class="container py-3">
+            <a class="navbar-brand d-inline-flex align-items-center" href="/">
+                <div class="ev-logo-icon me-2">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="d-flex flex-column">
+                    <span class="fs-4 fw-bold tracking-tight text-white lh-1">EVolt<span class="text-accent">Parts</span></span>
+                    <span class="extra-small text-secondary tracking-wider mt-1">Powering Every Ride.</span>
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#evNavbarContent" aria-controls="evNavbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="evNavbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
+                    <li class="nav-item"><a class="nav-link active fw-medium" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#how-it-works">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#why-us">Why EVoltParts</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#contact">Contact</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm px-4 py-2 rounded-2 fw-semibold">Login</a>
+                    <a href="{% url 'register' %}" class="btn ev-btn-primary btn-sm px-4 py-2 rounded-2 fw-semibold shadow-sm">
+                        Create Account
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 4. HERO SECTION -->
+    <section id="home" class="ev-hero position-relative py-5 overflow-hidden">
+        <div class="container py-lg-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7 text-start">
+                    <div class="d-inline-flex align-items-center badge bg-accent-subtle text-accent px-3 py-2 rounded-pill fw-semibold mb-4">
+                        <i class="fa-solid fa-wrench me-2"></i> Specialized Electric Two-Wheeler Spare Parts
+                    </div>
+                    <h1 class="display-3 fw-extrabold text-white mb-3 tracking-tight lh-sm">
+                        THE RIGHT PART.<br>
+                        <span class="text-accent">FOR THE RIGHT RIDE.</span>
+                    </h1>
+                    <p class="text-white fw-medium fs-5 mb-2">Your dedicated destination for electric two-wheeler spare parts.</p>
+                    <p class="text-secondary lead fs-6 mb-4">
+                        "From replacement components to essential accessories, EVoltParts helps you find the parts your electric ride needs — without searching through unrelated products."
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <a href="{% url 'login' %}" class="btn ev-btn-primary btn-lg px-4 py-3 fw-semibold rounded-3 shadow">
+                            Login to Explore <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                        <a href="{% url 'register' %}" class="btn btn-outline-light btn-lg px-4 py-3 fw-semibold rounded-3">
+                            Create Account
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center text-secondary small">
+                        <i class="fa-solid fa-shield-check text-accent me-2 fs-5"></i>
+                        <span>Specialized exclusively for electric two-wheeler parts (No complete bikes sold)</span>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <!-- Component Highlight Card -->
+                    <div class="ev-hero-card p-4 rounded-4 border border-secondary border-opacity-25 shadow-lg position-relative">
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom border-secondary border-opacity-10">
+                            <span class="text-white fw-bold small"><i class="fa-solid fa-microchip text-accent me-2"></i>Component Directory</span>
+                            <span class="badge bg-accent bg-opacity-10 text-accent small px-3 py-1 rounded-pill">Vehicle Compatibility Engine</span>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="p-3 rounded-3 bg-dark border border-secondary border-opacity-10 text-center">
+                                    <i class="fa-solid fa-circle-dot text-accent fs-3 mb-2"></i>
+                                    <h6 class="text-white small fw-bold mb-0">Brake Systems</h6>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 rounded-3 bg-dark border border-secondary border-opacity-10 text-center">
+                                    <i class="fa-solid fa-charging-station text-accent fs-3 mb-2"></i>
+                                    <h6 class="text-white small fw-bold mb-0">OEM Chargers</h6>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 rounded-3 bg-dark border border-secondary border-opacity-10 text-center">
+                                    <i class="fa-solid fa-bolt-lightning text-accent fs-3 mb-2"></i>
+                                    <h6 class="text-white small fw-bold mb-0">Controllers & Relays</h6>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 rounded-3 bg-dark border border-secondary border-opacity-10 text-center">
+                                    <i class="fa-solid fa-gears text-accent fs-3 mb-2"></i>
+                                    <h6 class="text-white small fw-bold mb-0">Motor Components</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-3 bg-card border border-secondary border-opacity-10 text-center">
+                            <span class="text-secondary extra-small d-block mb-1">Example: Ather 450X Selected</span>
+                            <span class="text-accent small fw-bold"><i class="fa-solid fa-check-circle me-1"></i> 142 Compatible Spare Parts Found</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WHAT IS EVOLTPARTS? -->
+    <section id="about" class="py-5 bg-dark border-top border-secondary border-opacity-10">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="text-accent text-uppercase fw-semibold tracking-wider small">Welcome to EVoltParts</span>
+                    <h2 class="display-6 fw-bold text-white my-3">ONE PLATFORM FOR YOUR E-BIKE PARTS.</h2>
+                    <p class="text-secondary lead fs-6 mb-3">
+                        "EVoltParts is built specifically for electric two-wheeler owners. Instead of browsing through thousands of unrelated automotive products, customers can discover spare parts and components focused specifically on electric rides."
+                    </p>
+                    <p class="text-secondary fs-6 mb-4">
+                        "Whether you need a replacement component, charging equipment, electrical part, braking component, or everyday accessory, EVoltParts is designed to make finding the right part easier."
+                    </p>
+                    <div class="d-flex gap-4">
+                        <div class="d-flex align-items-center">
+                            <div class="ev-bullet-dot me-2"></div>
+                            <span class="text-white small fw-semibold">100% Spare Parts Focus</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="ev-bullet-dot me-2"></div>
+                            <span class="text-white small fw-semibold">Vehicle-Linked Matching</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4 p-lg-5 rounded-4 bg-card border border-secondary border-opacity-25 shadow-sm text-center">
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                    <i class="fa-solid fa-battery-full text-accent fs-2 mb-2"></i>
+                                    <h5 class="text-white fw-bold fs-6 mb-1">Power Electronics</h5>
+                                    <p class="text-secondary extra-small mb-0">Chargers & wiring harnesses</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                    <i class="fa-solid fa-shield-halved text-accent fs-2 mb-2"></i>
+                                    <h5 class="text-white fw-bold fs-6 mb-1">Safety & Brakes</h5>
+                                    <p class="text-secondary extra-small mb-0">Pads, discs & calipers</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                    <i class="fa-solid fa-circle-notch text-accent fs-2 mb-2"></i>
+                                    <h5 class="text-white fw-bold fs-6 mb-1">Drive & Wheels</h5>
+                                    <p class="text-secondary extra-small mb-0">Tyres, bearings & belts</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-10">
+                                    <i class="fa-solid fa-lightbulb text-accent fs-2 mb-2"></i>
+                                    <h5 class="text-white fw-bold fs-6 mb-1">Lighting & Body</h5>
+                                    <p class="text-secondary extra-small mb-0">Indicators, mirrors & panels</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. WHAT CAN YOU FIND HERE? -->
+    <section class="py-5 bg-gradient-dark border-top border-secondary border-opacity-10">
+        <div class="container py-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="text-accent text-uppercase fw-semibold tracking-wider small">Catalog Categories</span>
+                    <h2 class="display-6 fw-bold text-white mb-2">PARTS FOR EVERY NEED.</h2>
+                    <p class="text-secondary">Specialized categories built for modern electric two-wheelers.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="ev-card-icon mb-3"><i class="fa-solid fa-wrench text-accent fs-4"></i></div>
+                        <h4 class="text-white fw-bold fs-5 mb-2">Mechanical Components</h4>
+                        <p class="text-secondary small mb-0">Components used for everyday maintenance and replacement.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="ev-card-icon mb-3"><i class="fa-solid fa-bolt text-accent fs-4"></i></div>
+                        <h4 class="text-white fw-bold fs-5 mb-2">Electrical Components</h4>
+                        <p class="text-secondary small mb-0">Essential electrical and electronic components for electric two-wheelers.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="ev-card-icon mb-3"><i class="fa-solid fa-plug text-accent fs-4"></i></div>
+                        <h4 class="text-white fw-bold fs-5 mb-2">Charging</h4>
+                        <p class="text-secondary small mb-0">Chargers and charging-related components.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="ev-card-icon mb-3"><i class="fa-solid fa-circle-dot text-accent fs-4"></i></div>
+                        <h4 class="text-white fw-bold fs-5 mb-2">Braking</h4>
+                        <p class="text-secondary small mb-0">Brake-related replacement components.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="ev-card-icon mb-3"><i class="fa-solid fa-circle-notch text-accent fs-4"></i></div>
+                        <h4 class="text-white fw-bold fs-5 mb-2">Wheels & Tyres</h4>
+                        <p class="text-secondary small mb-0">Tyres, tubes, and wheel-related components.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="ev-card-icon mb-3"><i class="fa-solid fa-toolbox text-accent fs-4"></i></div>
+                        <h4 class="text-white fw-bold fs-5 mb-2">Accessories</h4>
+                        <p class="text-secondary small mb-0">Useful accessories and replacement items for electric two-wheelers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. THE PROBLEM WE SOLVE -->
+    <section class="py-5 bg-dark border-top border-secondary border-opacity-10">
+        <div class="container py-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="text-accent text-uppercase fw-semibold tracking-wider small">The Problem We Solve</span>
+                    <h2 class="display-6 fw-bold text-white mb-2">FINDING THE RIGHT PART SHOULDN'T BE HARD.</h2>
+                </div>
+            </div>
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-4">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 text-center">
+                        <div class="text-danger mb-3 fs-3"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <h5 class="text-white fw-bold mb-2">TOO MANY OPTIONS</h5>
+                        <p class="text-secondary small mb-0">General marketplaces contain parts for many different vehicle types.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 text-center">
+                        <div class="text-warning mb-3 fs-3"><i class="fa-solid fa-circle-question"></i></div>
+                        <h5 class="text-white fw-bold mb-2">COMPATIBILITY CONFUSION</h5>
+                        <p class="text-secondary small mb-0">A part may look similar but may not be suitable for your specific vehicle.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 text-center">
+                        <div class="text-info mb-3 fs-3"><i class="fa-solid fa-clock"></i></div>
+                        <h5 class="text-white fw-bold mb-2">SEARCHING TAKES TIME</h5>
+                        <p class="text-secondary small mb-0">Finding the right component can become frustrating.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Solution Card -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="p-5 rounded-4 ev-solution-box text-center border border-accent border-opacity-25">
+                        <span class="badge bg-accent bg-opacity-15 text-accent px-3 py-1 rounded-pill fw-semibold mb-3">The EVoltParts Solution</span>
+                        <h3 class="text-white fw-bold mb-3">WE MAKE IT SIMPLER.</h3>
+                        <p class="text-secondary lead fs-6 mb-0">
+                            "EVoltParts focuses specifically on electric two-wheeler parts and helps customers narrow their search around their vehicle."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. HOW EVOLTPARTS WORKS -->
+    <section id="how-it-works" class="py-5 bg-gradient-dark border-top border-secondary border-opacity-10">
+        <div class="container py-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="text-accent text-uppercase fw-semibold tracking-wider small">Simple 3-Step Process</span>
+                    <h2 class="display-6 fw-bold text-white mb-2">FIND THE PART YOU NEED.</h2>
+                </div>
+            </div>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-4">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 position-relative">
+                        <div class="ev-step-badge mb-3">STEP 01</div>
+                        <h4 class="text-white fw-bold mb-2">SELECT YOUR VEHICLE</h4>
+                        <p class="text-secondary small mb-3">Choose your electric two-wheeler brand and model.</p>
+                        <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-10">
+                            <span class="text-secondary extra-small d-block mb-1">Example Selection:</span>
+                            <span class="text-accent fw-bold small"><i class="fa-solid fa-motorcycle me-1"></i> Ather → 450X</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 position-relative">
+                        <div class="ev-step-badge mb-3">STEP 02</div>
+                        <h4 class="text-white fw-bold mb-2">EXPLORE COMPATIBLE PARTS</h4>
+                        <p class="text-secondary small mb-3">Browse components associated with your selected vehicle.</p>
+                        <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-10">
+                            <span class="text-secondary extra-small d-block mb-1">Filtered Results:</span>
+                            <span class="text-white fw-bold small"><i class="fa-solid fa-filter me-1"></i> Verified Part Numbers Only</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 position-relative">
+                        <div class="ev-step-badge mb-3">STEP 03</div>
+                        <h4 class="text-white fw-bold mb-2">SHOP WITH CONFIDENCE</h4>
+                        <p class="text-secondary small mb-3">Review the part information and continue with your purchase.</p>
+                        <div class="p-3 bg-dark rounded-3 border border-secondary border-opacity-10">
+                            <span class="text-secondary extra-small d-block mb-1">Secure Checkout:</span>
+                            <span class="text-accent fw-bold small"><i class="fa-solid fa-bag-shopping me-1"></i> Fast & Direct Dispatch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. COMPATIBILITY CONCEPT -->
+    <section class="py-5 bg-dark border-top border-secondary border-opacity-10">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="text-accent text-uppercase fw-semibold tracking-wider small">Vehicle Compatibility Engine</span>
+                    <h2 class="display-6 fw-bold text-white my-3">YOUR VEHICLE HELPS FIND YOUR PART.</h2>
+                    <p class="text-secondary lead fs-6 mb-3">
+                        "Different electric two-wheelers can use different components. EVoltParts is designed around vehicle-based compatibility, helping you narrow your search before purchasing."
+                    </p>
+                    <p class="text-secondary small mb-0">
+                        <span class="text-accent fw-semibold">Note:</span> The electric vehicle model is used solely to identify and verify suitable replacement parts and accessories. We do not sell complete vehicles.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4 p-lg-5 rounded-4 bg-card border border-secondary border-opacity-25 text-center">
+                        <div class="py-2 px-3 bg-dark rounded-3 d-inline-block border border-secondary border-opacity-10 text-white fw-bold mb-3">
+                            <i class="fa-solid fa-motorcycle text-accent me-2"></i> Ather 450X
+                        </div>
+                        <div class="text-accent my-2 fs-4"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="py-2 px-3 bg-dark rounded-3 d-inline-block border border-secondary border-opacity-10 text-white fw-bold mb-3">
+                            <i class="fa-solid fa-network-wired text-accent me-2"></i> Compatibility Matching
+                        </div>
+                        <div class="text-accent my-2 fs-4"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="row g-2 justify-content-center pt-2">
+                            <div class="col-4"><span class="badge bg-dark border border-secondary border-opacity-25 text-secondary p-2 w-100">Braking</span></div>
+                            <div class="col-4"><span class="badge bg-dark border border-secondary border-opacity-25 text-secondary p-2 w-100">Electrical</span></div>
+                            <div class="col-4"><span class="badge bg-dark border border-secondary border-opacity-25 text-secondary p-2 w-100">Charging</span></div>
+                            <div class="col-4"><span class="badge bg-dark border border-secondary border-opacity-25 text-secondary p-2 w-100">Body Parts</span></div>
+                            <div class="col-4"><span class="badge bg-dark border border-secondary border-opacity-25 text-secondary p-2 w-100">Wheels</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. WHY SPECIALIZED? -->
+    <section id="why-us" class="py-5 bg-gradient-dark border-top border-secondary border-opacity-10">
+        <div class="container py-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="text-accent text-uppercase fw-semibold tracking-wider small">The EVoltParts Advantage</span>
+                    <h2 class="display-6 fw-bold text-white mb-2">WHY EVOLTPARTS?</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="ev-card-icon me-3 mb-0"><i class="fa-solid fa-bolt text-accent fs-5"></i></div>
+                            <h4 class="text-white fw-bold fs-5 mb-0">E-BIKE FOCUSED</h4>
+                        </div>
+                        <p class="text-secondary small mb-0">We focus specifically on electric two-wheeler parts and accessories without gas vehicle clutter.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="ev-card-icon me-3 mb-0"><i class="fa-solid fa-crosshairs text-accent fs-5"></i></div>
+                            <h4 class="text-white fw-bold fs-5 mb-0">COMPATIBILITY FIRST</h4>
+                        </div>
+                        <p class="text-secondary small mb-0">Vehicle information helps narrow down suitable components so you buy with absolute confidence.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="ev-card-icon me-3 mb-0"><i class="fa-solid fa-magnifying-glass text-accent fs-5"></i></div>
+                            <h4 class="text-white fw-bold fs-5 mb-0">LESS SEARCHING</h4>
+                        </div>
+                        <p class="text-secondary small mb-0">A focused platform makes finding relevant replacement parts significantly easier and faster.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="ev-card-icon me-3 mb-0"><i class="fa-solid fa-user-shield text-accent fs-5"></i></div>
+                            <h4 class="text-white fw-bold fs-5 mb-0">BUILT FOR RIDERS</h4>
+                        </div>
+                        <p class="text-secondary small mb-0">Designed around the everyday maintenance and upgrade needs of electric two-wheeler owners.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. SUPPORTED VEHICLE BRANDS -->
+    <section class="py-5 bg-dark border-top border-secondary border-opacity-10">
+        <div class="container py-4 text-center">
+            <span class="text-accent text-uppercase fw-semibold tracking-wider small">Vehicle Ecosystem</span>
+            <h2 class="display-6 fw-bold text-white my-3">BUILT AROUND YOUR RIDE.</h2>
+            <p class="text-secondary lead fs-6 mb-4">
+                "Find parts based on the electric two-wheeler you own."
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3 my-4">
+                <div class="ev-brand-pill px-4 py-3 rounded-3 bg-card border border-secondary border-opacity-25 text-white fw-semibold">Ather</div>
+                <div class="ev-brand-pill px-4 py-3 rounded-3 bg-card border border-secondary border-opacity-25 text-white fw-semibold">Ola Electric</div>
+                <div class="ev-brand-pill px-4 py-3 rounded-3 bg-card border border-secondary border-opacity-25 text-white fw-semibold">TVS</div>
+                <div class="ev-brand-pill px-4 py-3 rounded-3 bg-card border border-secondary border-opacity-25 text-white fw-semibold">Bajaj</div>
+                <div class="ev-brand-pill px-4 py-3 rounded-3 bg-card border border-secondary border-opacity-25 text-white fw-semibold">Vida</div>
+                <div class="ev-brand-pill px-4 py-3 rounded-3 bg-card border border-secondary border-opacity-25 text-white fw-semibold">River</div>
+            </div>
+            <p class="text-secondary extra-small mb-0">More vehicle support can be added as the platform grows.</p>
+        </div>
+    </section>
+
+    <!-- 12. QUALITY & TRUST -->
+    <section class="py-5 bg-gradient-dark border-top border-secondary border-opacity-10">
+        <div class="container py-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="text-accent text-uppercase fw-semibold tracking-wider small">Reliability & Standards</span>
+                    <h2 class="display-6 fw-bold text-white mb-2">PARTS. INFORMATION. CONFIDENCE.</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 text-center">
+                        <i class="fa-solid fa-award text-accent fs-3 mb-3"></i>
+                        <h5 class="text-white fw-bold mb-2">Specialized Platform</h5>
+                        <p class="text-secondary small mb-0">Focused specifically on electric two-wheeler parts.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 text-center">
+                        <i class="fa-solid fa-circle-info text-accent fs-3 mb-3"></i>
+                        <h5 class="text-white fw-bold mb-2">Clear Information</h5>
+                        <p class="text-secondary small mb-0">Understand what you're purchasing before ordering.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 text-center">
+                        <i class="fa-solid fa-bullseye text-accent fs-3 mb-3"></i>
+                        <h5 class="text-white fw-bold mb-2">Compatibility Focus</h5>
+                        <p class="text-secondary small mb-0">Find parts based on your selected vehicle.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="p-4 rounded-4 bg-card border border-secondary border-opacity-25 h-100 text-center">
+                        <i class="fa-solid fa-lock text-accent fs-3 mb-3"></i>
+                        <h5 class="text-white fw-bold mb-2">Secure Experience</h5>
+                        <p class="text-secondary small mb-0">Account and shopping experience designed with security in mind.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. "MORE AWAITS INSIDE" SECTION -->
+    <section class="py-5 bg-dark">
+        <div class="container py-4">
+            <div class="ev-green-cta-box p-5 rounded-4 border border-secondary border-opacity-25 text-center position-relative overflow-hidden">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <span class="badge bg-accent bg-opacity-15 text-accent px-3 py-1 rounded-pill fw-semibold mb-3">Platform Access</span>
+                        <h2 class="display-6 fw-bold text-white mb-3">THERE'S MORE INSIDE EVOLTPARTS.</h2>
+                        <p class="text-secondary lead fs-6 mb-4">
+                            "Create your account or log in to explore the complete EVoltParts experience."
+                        </p>
+                        <div class="row justify-content-center text-start g-2 mb-4">
+                            <div class="col-md-5">
+                                <ul class="list-unstyled text-secondary small mb-0">
+                                    <li class="mb-2"><i class="fa-solid fa-check text-accent me-2"></i> Explore spare parts catalog</li>
+                                    <li class="mb-2"><i class="fa-solid fa-check text-accent me-2"></i> Find parts by vehicle</li>
+                                    <li class="mb-0"><i class="fa-solid fa-check text-accent me-2"></i> Check live compatibility</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5">
+                                <ul class="list-unstyled text-secondary small mb-0">
+                                    <li class="mb-2"><i class="fa-solid fa-check text-accent me-2"></i> Save your electric vehicle</li>
+                                    <li class="mb-2"><i class="fa-solid fa-check text-accent me-2"></i> Manage your orders & garage</li>
+                                    <li class="mb-0"><i class="fa-solid fa-check text-accent me-2"></i> Create your personal experience</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center flex-wrap gap-3">
+                            <a href="/login/" class="btn ev-btn-primary px-4 py-3 fw-semibold rounded-3 shadow">
+                                Login to Continue <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </a>
+                            <a href="/register/" class="btn btn-outline-light px-4 py-3 fw-semibold rounded-3">
+                                Create Account
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. STRONG FINAL CTA -->
+    <section class="py-5 bg-gradient-dark text-center border-top border-secondary border-opacity-10">
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="display-6 fw-bold text-white mb-3">YOUR RIDE NEEDS THE RIGHT PART.</h2>
+                    <p class="text-secondary lead fs-6 mb-4">
+                        "Start your EVoltParts journey and discover a simpler way to find electric two-wheeler spare parts."
+                    </p>
+                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                        <a href="/register/" class="btn ev-btn-primary px-5 py-3 fw-semibold rounded-3 shadow">
+                            Create Your Account <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                        <a href="/login/" class="btn btn-outline-light px-4 py-3 fw-semibold rounded-3">
+                            Already have an account? Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. FOOTER -->
+    <footer id="contact" class="ev-footer pt-5 pb-4 bg-dark border-top border-secondary border-opacity-15 text-secondary">
+        <div class="container">
+            <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-10">
+                <div class="col-lg-4 mb-3 mb-lg-0">
+                    <a class="navbar-brand d-inline-flex align-items-center mb-2" href="/">
+                        <div class="ev-logo-icon me-2">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="fs-4 fw-bold tracking-tight text-white">EVolt<span class="text-accent">Parts</span></span>
+                    </a>
+                    <p class="text-secondary small mb-1">Powering Every Ride.</p>
+                    <p class="text-secondary extra-small mb-0">"Your dedicated platform for electric two-wheeler spare parts and components."</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="text-white fw-bold mb-3 small uppercase tracking-wider">Company</h6>
+                    <ul class="list-unstyled small mb-0">
+                        <li class="mb-2"><a href="#home" class="text-secondary text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#about" class="text-secondary text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#how-it-works" class="text-secondary text-decoration-none">How It Works</a></li>
+                        <li class="mb-0"><a href="#contact" class="text-secondary text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h6 class="text-white fw-bold mb-3 small uppercase tracking-wider">Support</h6>
+                    <ul class="list-unstyled small mb-0">
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">FAQs</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Shipping</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Returns</a></li>
+                        <li class="mb-0"><a href="#" class="text-secondary text-decoration-none">Warranty</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="text-white fw-bold mb-3 small uppercase tracking-wider">Account</h6>
+                    <ul class="list-unstyled small mb-0">
+                        <li class="mb-2"><a href="/login/" class="text-secondary text-decoration-none">Login</a></li>
+                        <li class="mb-0"><a href="/register/" class="text-secondary text-decoration-none">Create Account</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row pt-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="extra-small text-secondary mb-0">© 2026 EVoltParts. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0 small">
+                        <li class="list-inline-item me-3"><a href="#" class="text-secondary text-decoration-none extra-small">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-secondary text-decoration-none extra-small">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{% static 'js/landingpagejs.js' %}"></script>
+</body>
+</html>

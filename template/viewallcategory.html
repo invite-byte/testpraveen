@@ -1,0 +1,1015 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>All Spare Parts Categories — EVoltParts</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+    :root {
+        --ev-bg-deep: #06090d;
+
+        --ev-card-bg:
+            linear-gradient(
+                135deg,
+                rgba(15, 21, 28, 0.8) 0%,
+                rgba(10, 15, 20, 0.9) 100%
+            );
+
+        --ev-card-hover-bg:
+            linear-gradient(
+                135deg,
+                rgba(20, 28, 38, 0.95) 0%,
+                rgba(14, 21, 28, 1) 100%
+            );
+
+        --ev-border-color: rgba(255, 255, 255, 0.07);
+
+        --ev-border-hover:
+            rgba(126, 231, 135, 0.4);
+
+        --ev-accent: #7ee787;
+
+        --ev-accent-subtle:
+            rgba(126, 231, 135, 0.1);
+
+        --ev-text-main: #f8f9fa;
+
+        --ev-text-secondary: #94a3b8;
+
+        --ev-transition:
+            all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+
+    /* ==============================
+       BODY
+    ============================== */
+
+    body {
+
+        font-family: 'Inter', sans-serif;
+
+        background-color:
+            var(--ev-bg-deep);
+
+        color:
+            var(--ev-text-main);
+
+        min-height: 100vh;
+
+        display: flex;
+
+        flex-direction: column;
+
+        overflow-x: hidden;
+
+        background-image:
+
+            radial-gradient(
+                circle at 10% 20%,
+                rgba(126, 231, 135, 0.03) 0%,
+                transparent 40%
+            ),
+
+            radial-gradient(
+                circle at 90% 80%,
+                rgba(126, 231, 135, 0.02) 0%,
+                transparent 40%
+            );
+    }
+
+
+    /* ==============================
+       COMMON
+    ============================== */
+
+    .tracking-wider {
+        letter-spacing: 0.08em;
+    }
+
+    .text-accent {
+        color: var(--ev-accent) !important;
+    }
+
+    .bg-accent-subtle {
+        background-color:
+            var(--ev-accent-subtle) !important;
+    }
+
+
+    /* ==============================
+       HEADER
+    ============================== */
+
+    .ev-header-bar {
+
+        background-color:
+            rgba(6, 9, 13, 0.85);
+
+        backdrop-filter:
+            blur(16px);
+
+        -webkit-backdrop-filter:
+            blur(16px);
+
+        border-bottom:
+            1px solid var(--ev-border-color);
+    }
+
+
+    /* ==============================
+       LOGO
+    ============================== */
+
+    .ev-logo-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+        background:
+            var(--ev-accent-subtle);
+
+        border:
+            1px solid rgba(126, 231, 135, 0.25);
+
+        border-radius: 10px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color:
+            var(--ev-accent);
+
+        font-size: 1rem;
+    }
+
+
+    /* ==============================
+       CATEGORY CARD
+    ============================== */
+
+    .ev-category-card {
+
+        background:
+            var(--ev-card-bg);
+
+        backdrop-filter:
+            blur(12px);
+
+        -webkit-backdrop-filter:
+            blur(12px);
+
+        border:
+            1px solid var(--ev-border-color);
+
+        border-radius:
+            20px;
+
+        transition:
+            var(--ev-transition);
+
+        position:
+            relative;
+
+        overflow:
+            hidden;
+
+        text-decoration:
+            none !important;
+    }
+
+
+    .ev-category-card:hover {
+
+        background:
+            var(--ev-card-hover-bg);
+
+        border-color:
+            var(--ev-border-hover);
+
+        transform:
+            translateY(-6px);
+
+        box-shadow:
+
+            0 16px 40px -10px
+            rgba(0, 0, 0, 0.7),
+
+            0 0 20px
+            rgba(126, 231, 135, 0.08);
+    }
+
+
+    /* ==============================
+       ICON BOX
+    ============================== */
+
+    .ev-card-icon-box {
+
+        width: 56px;
+
+        height: 56px;
+
+        background:
+            var(--ev-accent-subtle);
+
+        border:
+            1px solid rgba(126, 231, 135, 0.2);
+
+        border-radius:
+            16px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color:
+            var(--ev-accent);
+
+        font-size:
+            1.35rem;
+
+        transition:
+            var(--ev-transition);
+    }
+
+
+    .ev-category-card:hover
+    .ev-card-icon-box {
+
+        background-color:
+            var(--ev-accent);
+
+        color:
+            #06090d;
+
+        transform:
+            scale(1.05);
+    }
+
+
+    /* ==============================
+       EXPLORE LINK
+    ============================== */
+
+    .ev-explore-link {
+
+        color:
+            var(--ev-text-secondary);
+
+        font-weight:
+            600;
+
+        font-size:
+            0.9rem;
+
+        transition:
+            var(--ev-transition);
+    }
+
+
+    .ev-category-card:hover
+    .ev-explore-link {
+
+        color:
+            var(--ev-accent);
+
+        transform:
+            translateX(4px);
+    }
+
+
+    /* ==============================
+       BUTTON
+    ============================== */
+
+    .ev-btn-outline-custom {
+
+        border:
+            1px solid var(--ev-border-color);
+
+        color:
+            var(--ev-text-main);
+
+        background:
+            rgba(255, 255, 255, 0.02);
+
+        backdrop-filter:
+            blur(8px);
+
+        transition:
+            var(--ev-transition);
+    }
+
+
+    .ev-btn-outline-custom:hover {
+
+        background-color:
+            var(--ev-accent);
+
+        border-color:
+            var(--ev-accent);
+
+        color:
+            #06090d;
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    footer {
+
+        margin-top:
+            auto;
+
+        border-top:
+            1px solid var(--ev-border-color);
+
+        background-color:
+            #040609;
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="ev-header-bar sticky-top py-3">
+
+    <div class="container d-flex justify-content-between align-items-center">
+
+
+        <!-- LOGO -->
+
+        <a
+            class="d-inline-flex align-items-center text-decoration-none"
+            href="{% url 'home' name=name %}"
+        >
+
+            <div class="ev-logo-icon me-2">
+
+                <i class="fa-solid fa-bolt"></i>
+
+            </div>
+
+
+            <div class="d-flex flex-column">
+
+                <span class="fs-6 fw-bold text-white lh-1">
+
+                    EVolt<span class="text-accent">
+                        Parts
+                    </span>
+
+                </span>
+
+
+                <span
+                    class="extra-small text-secondary tracking-wider"
+                    style="font-size: 0.65rem;"
+                >
+                    CATALOG
+                </span>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- BACK BUTTON -->
+
+        <a
+            href="{% url 'home' name=name %}"
+            class="btn ev-btn-outline-custom btn-sm px-3 py-2 rounded-2 fw-semibold fs-7"
+        >
+
+            <i class="fa-solid fa-arrow-left me-1"></i>
+
+            Back to Home
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="container py-5 my-3">
+
+
+    <!-- PAGE HEADING -->
+
+    <div class="row mb-5">
+
+        <div class="col-lg-8">
+
+            <span
+                class="text-accent text-uppercase fw-semibold tracking-wider small d-block mb-2"
+            >
+                EVOLTPARTS / CATALOG
+            </span>
+
+
+            <h1
+                class="display-5 fw-extrabold text-white mb-3 tracking-tight"
+            >
+                All Spare Parts Categories
+            </h1>
+
+
+            <p class="text-secondary lead fs-6 mb-0">
+
+                “Everything you need to maintain, repair and upgrade your electric ride.”
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         CATEGORY CARDS
+    ================================================== -->
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+
+
+        <!-- =================================================
+             01 - BREAK PAD
+        ================================================== -->
+
+        <div class="col">
+
+            <a
+                href="{% url 'allproduct' name=name %}?category=Break-Pad"
+                class="card ev-category-card h-100 p-4 d-flex flex-column justify-content-between"
+            >
+
+                <div>
+
+
+                    <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                    >
+
+                        <span
+                            class="text-secondary font-monospace small fw-bold"
+                        >
+                            01
+                        </span>
+
+
+                        <span
+                            class="badge bg-dark border border-secondary border-opacity-25 text-secondary px-3 py-1 rounded-pill small"
+                        >
+                            Break Pads
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="ev-card-icon-box mb-4">
+
+                        <i class="fa-solid fa-circle-dot"></i>
+
+                    </div>
+
+
+
+                    <h3 class="text-white fw-bold fs-4 mb-2">
+
+                        Braking Systems
+
+                    </h3>
+
+
+
+                    <p class="text-secondary small mb-4">
+
+                        Brake pads, discs, master cylinders, levers and hydraulic components.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center"
+                >
+
+                    <span class="ev-explore-link">
+
+                        Explore
+
+                    </span>
+
+
+                    <i
+                        class="fa-solid fa-arrow-right text-secondary small"
+                    ></i>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             02 - CONTROLLER
+        ================================================== -->
+
+        <div class="col">
+
+            <a
+                href="{% url 'allproduct' name=name %}?category=Controller"
+                class="card ev-category-card h-100 p-4 d-flex flex-column justify-content-between"
+            >
+
+                <div>
+
+
+                    <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                    >
+
+                        <span
+                            class="text-secondary font-monospace small fw-bold"
+                        >
+                            02
+                        </span>
+
+
+                        <span
+                            class="badge bg-dark border border-secondary border-opacity-25 text-secondary px-3 py-1 rounded-pill small"
+                        >
+                            Controllers
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="ev-card-icon-box mb-4">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                    </div>
+
+
+
+                    <h3 class="text-white fw-bold fs-4 mb-2">
+
+                        Electrical & Controllers
+
+                    </h3>
+
+
+
+                    <p class="text-secondary small mb-4">
+
+                        Controllers, wiring harnesses, relays, switches and fuses.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center"
+                >
+
+                    <span class="ev-explore-link">
+
+                        Explore
+
+                    </span>
+
+
+                    <i
+                        class="fa-solid fa-arrow-right text-secondary small"
+                    ></i>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             03 - CHARGER
+        ================================================== -->
+
+        <div class="col">
+
+            <a
+                href="{% url 'allproduct' name=name %}?category=Charger"
+                class="card ev-category-card h-100 p-4 d-flex flex-column justify-content-between"
+            >
+
+                <div>
+
+
+                    <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                    >
+
+                        <span
+                            class="text-secondary font-monospace small fw-bold"
+                        >
+                            03
+                        </span>
+
+
+                        <span
+                            class="badge bg-dark border border-secondary border-opacity-25 text-secondary px-3 py-1 rounded-pill small"
+                        >
+                            Chargers
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="ev-card-icon-box mb-4">
+
+                        <i class="fa-solid fa-charging-station"></i>
+
+                    </div>
+
+
+
+                    <h3 class="text-white fw-bold fs-4 mb-2">
+
+                        Charging Solutions
+
+                    </h3>
+
+
+
+                    <p class="text-secondary small mb-4">
+
+                        Chargers, charging cables, connectors and mounting accessories.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center"
+                >
+
+                    <span class="ev-explore-link">
+
+                        Explore
+
+                    </span>
+
+
+                    <i
+                        class="fa-solid fa-arrow-right text-secondary small"
+                    ></i>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             04 - MOTOR
+        ================================================== -->
+
+        <div class="col">
+
+            <a
+                href="{% url 'allproduct' name=name %}?category=Motor"
+                class="card ev-category-card h-100 p-4 d-flex flex-column justify-content-between"
+            >
+
+                <div>
+
+
+                    <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                    >
+
+                        <span
+                            class="text-secondary font-monospace small fw-bold"
+                        >
+                            04
+                        </span>
+
+
+                        <span
+                            class="badge bg-dark border border-secondary border-opacity-25 text-secondary px-3 py-1 rounded-pill small"
+                        >
+                            Motors
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="ev-card-icon-box mb-4">
+
+                        <i class="fa-solid fa-gears"></i>
+
+                    </div>
+
+
+
+                    <h3 class="text-white fw-bold fs-4 mb-2">
+
+                        Motor & Drive
+
+                    </h3>
+
+
+
+                    <p class="text-secondary small mb-4">
+
+                        Hub motors, pulleys, bearings, belt drives and drive components.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center"
+                >
+
+                    <span class="ev-explore-link">
+
+                        Explore
+
+                    </span>
+
+
+                    <i
+                        class="fa-solid fa-arrow-right text-secondary small"
+                    ></i>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             05 - TYRE
+        ================================================== -->
+
+        <div class="col">
+
+            <a
+                href="{% url 'allproduct' name=name %}?category=Tyre"
+                class="card ev-category-card h-100 p-4 d-flex flex-column justify-content-between"
+            >
+
+                <div>
+
+
+                    <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                    >
+
+                        <span
+                            class="text-secondary font-monospace small fw-bold"
+                        >
+                            05
+                        </span>
+
+
+                        <span
+                            class="badge bg-dark border border-secondary border-opacity-25 text-secondary px-3 py-1 rounded-pill small"
+                        >
+                            Tyres
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="ev-card-icon-box mb-4">
+
+                        <i class="fa-solid fa-circle-notch"></i>
+
+                    </div>
+
+
+
+                    <h3 class="text-white fw-bold fs-4 mb-2">
+
+                        Tyres & Wheels
+
+                    </h3>
+
+
+
+                    <p class="text-secondary small mb-4">
+
+                        Tubeless tyres, inner tubes, valves, axles and wheel components.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center"
+                >
+
+                    <span class="ev-explore-link">
+
+                        Explore
+
+                    </span>
+
+
+                    <i
+                        class="fa-solid fa-arrow-right text-secondary small"
+                    ></i>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             06 - LIGHT
+        ================================================== -->
+
+        <div class="col">
+
+            <a
+                href="{% url 'allproduct' name=name %}?category=Light"
+                class="card ev-category-card h-100 p-4 d-flex flex-column justify-content-between"
+            >
+
+                <div>
+
+
+                    <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                    >
+
+                        <span
+                            class="text-secondary font-monospace small fw-bold"
+                        >
+                            06
+                        </span>
+
+
+                        <span
+                            class="badge bg-dark border border-secondary border-opacity-25 text-secondary px-3 py-1 rounded-pill small"
+                        >
+                            Lighting
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="ev-card-icon-box mb-4">
+
+                        <i class="fa-solid fa-lightbulb"></i>
+
+                    </div>
+
+
+
+                    <h3 class="text-white fw-bold fs-4 mb-2">
+
+                        Lighting & Body
+
+                    </h3>
+
+
+
+                    <p class="text-secondary small mb-4">
+
+                        LED headlights, indicators, tail lamps, mirrors and body panels.
+
+                    </p>
+
+                </div>
+
+
+
+                <div
+                    class="pt-3 border-top border-secondary border-opacity-10 d-flex justify-content-between align-items-center"
+                >
+
+                    <span class="ev-explore-link">
+
+                        Explore
+
+                    </span>
+
+
+                    <i
+                        class="fa-solid fa-arrow-right text-secondary small"
+                    ></i>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="py-4 text-center text-secondary small">
+
+    <div class="container">
+
+        <p class="mb-0">
+
+            © 2026 EVoltParts.
+            Specialized Electric Two-Wheeler Spare Parts Platform.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+</html>

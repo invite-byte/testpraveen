@@ -1,0 +1,139 @@
+/* EVoltParts Green Brand Design System */
+:root {
+    --ev-bg-deep: #080c10;
+    --ev-card-bg: #0f151c;
+    --ev-card-hover: #141c25;
+    --ev-border-color: rgba(255, 255, 255, 0.08);
+    --ev-forest-green: #0a2518;
+    --ev-emerald-green: #00b060;
+    --ev-accent: #00ff88;
+    --ev-accent-hover: #00cc6d;
+    --ev-accent-subtle: rgba(0, 255, 136, 0.1);
+    --ev-text-main: #f8f9fa;
+    --ev-text-secondary: #94a3b8;
+    --ev-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.ev-body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--ev-bg-deep);
+    color: var(--ev-text-main);
+    overflow-x: hidden;
+}
+
+/* Utilities */
+.tracking-tight { letter-spacing: -0.02em; }
+.tracking-wider { letter-spacing: 0.05em; }
+.extra-small { font-size: 0.8rem; }
+.text-accent { color: var(--ev-accent) !important; }
+.bg-accent { background-color: var(--ev-accent) !important; }
+.bg-accent-subtle { background-color: var(--ev-accent-subtle) !important; }
+.bg-card { background-color: var(--ev-card-bg) !important; }
+.bg-gradient-dark { background: linear-gradient(180deg, var(--ev-bg-deep) 0%, #0c1218 100%); }
+
+/* Navbar */
+.ev-navbar {
+    background-color: rgba(8, 12, 16, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--ev-border-color);
+}
+
+.ev-logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--ev-accent-subtle);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ev-accent);
+    font-size: 1.1rem;
+}
+
+.ev-navbar .nav-link {
+    color: var(--ev-text-secondary);
+    transition: var(--ev-transition);
+}
+
+.ev-navbar .nav-link:hover, .ev-navbar .nav-link.active {
+    color: var(--ev-accent);
+}
+
+/* Buttons */
+.ev-btn-primary {
+    background-color: var(--ev-accent);
+    border: none;
+    color: #080c10;
+    transition: var(--ev-transition);
+}
+
+.ev-btn-primary:hover {
+    background-color: var(--ev-accent-hover);
+    color: #080c10;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+/* Hero Card & UI Boxes */
+.ev-hero-card {
+    background: rgba(15, 21, 28, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--ev-border-color);
+}
+
+.ev-card-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--ev-accent-subtle);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ev-bullet-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--ev-accent);
+    border-radius: 50%;
+}
+
+.ev-solution-box {
+    background: linear-gradient(135deg, #0d1e16 0%, #09120e 100%);
+}
+
+.ev-step-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--ev-accent-subtle);
+    color: var(--ev-accent);
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.ev-green-cta-box {
+    background: linear-gradient(135deg, #0f2b1e 0%, #081510 100%);
+    border: 1px solid rgba(0, 255, 136, 0.25);
+}
+
+.ev-brand-pill {
+    transition: var(--ev-transition);
+}
+
+.ev-brand-pill:hover {
+    border-color: rgba(0, 255, 136, 0.4);
+    background-color: #141c25 !important;
+    transform: translateY(-2px);
+}
+
+.bg-card {
+    transition: var(--ev-transition);
+}
+
+.bg-card:hover {
+    border-color: rgba(0, 255, 136, 0.3);
+    transform: translateY(-2px);
+}

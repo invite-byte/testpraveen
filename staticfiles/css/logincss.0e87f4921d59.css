@@ -1,0 +1,176 @@
+/* Core Design Tokens & Variables */
+:root {
+    --ev-bg-deep: #0b0f12;
+    --ev-card-bg: #12181f;
+    --ev-border-color: rgba(255, 255, 255, 0.08);
+    --ev-border-focus: #00ff88;
+    --ev-accent: #00ff88;
+    --ev-accent-hover: #00cc6d;
+    --ev-accent-subtle: rgba(0, 255, 136, 0.1);
+    --ev-text-main: #f8f9fa;
+    --ev-text-secondary: #94a3b8;
+    --ev-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Styles */
+body.ev-body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--ev-bg-deep);
+    color: var(--ev-text-main);
+    overflow-x: hidden;
+}
+
+/* Accent Utilities */
+.text-accent {
+    color: var(--ev-accent) !important;
+}
+
+.bg-accent-subtle {
+    background-color: var(--ev-accent-subtle) !important;
+}
+
+/* Left Brand Section Styling */
+.ev-brand-section {
+    background: radial-gradient(circle at 20% 30%, #15222e 0%, var(--ev-bg-deep) 70%);
+}
+
+.ev-tech-pattern {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.6;
+}
+
+.ev-radial-glow {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.07) 0%, transparent 70%);
+    top: 20%;
+    left: 20%;
+    pointer-events: none;
+}
+
+.ev-logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--ev-accent-subtle);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ev-accent);
+    font-size: 1.1rem;
+}
+
+.ev-hero-visual-card {
+    background: rgba(18, 24, 31, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+/* Right Login Form Section Styling */
+.ev-form-section {
+    background-color: var(--ev-bg-deep);
+}
+
+.ev-login-card {
+    background-color: var(--ev-card-bg);
+    max-width: 440px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+/* Input Groups & Form Controls */
+.ev-input-group {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--ev-border-color);
+    transition: var(--ev-transition);
+}
+
+.ev-input-group:focus-within {
+    border-color: var(--ev-border-focus);
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.ev-input-group .form-control {
+    font-size: 0.95rem;
+}
+
+.ev-input-group .form-control::placeholder {
+    color: #475569;
+}
+
+.ev-input-group .input-group-text,
+.ev-input-group .password-toggle-btn {
+    border: none;
+    color: #64748b;
+    transition: var(--ev-transition);
+}
+
+.ev-input-group:focus-within .input-group-text,
+.ev-input-group:focus-within .password-toggle-btn {
+    color: var(--ev-accent);
+}
+
+.password-toggle-btn:hover {
+    color: var(--ev-text-main) !important;
+}
+
+/* Checkbox Styling */
+.ev-checkbox {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--ev-border-color);
+    width: 1.1rem;
+    height: 1.1rem;
+    cursor: pointer;
+}
+
+.ev-checkbox:checked {
+    background-color: var(--ev-accent);
+    border-color: var(--ev-accent);
+}
+
+/* Hyperlinks Styling */
+.ev-link {
+    color: var(--ev-accent);
+    transition: var(--ev-transition);
+}
+
+.ev-link:hover {
+    color: var(--ev-accent-hover);
+    text-decoration: underline !important;
+}
+
+/* Primary Button Styling */
+.ev-btn-primary {
+    background-color: var(--ev-accent);
+    border: none;
+    color: #0b0f12;
+    font-size: 1rem;
+    transition: var(--ev-transition);
+}
+
+.ev-btn-primary:hover {
+    background-color: var(--ev-accent-hover);
+    color: #0b0f12;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+}
+
+.ev-btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Error States Styling */
+.form-control.is-invalid, .ev-input-group.is-invalid {
+    border-color: #ef4444 !important;
+}
+
+.form-control.is-invalid:focus, .ev-input-group.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.invalid-feedback {
+    color: #ef4444;
+}

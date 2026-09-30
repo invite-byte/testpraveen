@@ -1,0 +1,743 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile — EVoltParts</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        rel="stylesheet">
+
+    <style>
+
+        body {
+            background: #f4faf7;
+            font-family: Arial, sans-serif;
+            color: #1b4332;
+        }
+
+        /* =========================================
+        PROFILE SUCCESS POPUP
+        ========================================= */
+
+        .success-overlay {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(27, 67, 50, 0.55);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 9999;
+
+            backdrop-filter: blur(4px);
+        }
+
+
+        .success-popup {
+
+            width: 420px;
+            max-width: 90%;
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 35px 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.2);
+
+            animation: popupOpen 0.35s ease;
+        }
+
+
+        @keyframes popupOpen {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(0.85);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+
+            }
+
+        }
+
+
+        .success-icon {
+
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #d8f3dc;
+
+            color: #2d6a4f;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+        }
+
+
+        .success-popup h3 {
+
+            color: #1b4332;
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            margin-bottom: 10px;
+        }
+
+
+        .success-popup p {
+
+            color: #6c757d;
+
+            font-size: 15px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .redirect-text {
+
+            color: #1b4332;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            margin-bottom: 15px;
+        }
+
+
+        #countdown {
+
+            color: #2d6a4f;
+
+            font-size: 20px;
+
+            font-weight: 700;
+        }
+
+
+        .progress-container {
+
+            width: 100%;
+
+            height: 6px;
+
+            background: #e9f5ee;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 100%;
+
+            background: #2d6a4f;
+
+            border-radius: 10px;
+
+            transition: width 1s linear;
+        }
+
+        .profile-wrapper {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(27, 67, 50, 0.08);
+            overflow: hidden;
+        }
+
+        .profile-header {
+            background: #1b4332;
+            color: white;
+            padding: 30px;
+        }
+
+        .profile-header h2 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .profile-header p {
+            margin: 5px 0 0;
+            color: #b7e4c7;
+        }
+
+        .profile-body {
+            padding: 35px;
+        }
+
+        .photo-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #b7e4c7;
+        }
+
+        .default-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #95d5b2;
+            color: #1b4332;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 45px;
+            font-weight: bold;
+
+            margin: auto;
+        }
+
+        .change-photo {
+            margin-top: 15px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #1b4332;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 14px;
+            border: 1px solid #d8e8df;
+        }
+
+        .form-control:focus {
+            border-color: #40916c;
+            box-shadow: 0 0 0 0.2rem rgba(64, 145, 108, 0.15);
+        }
+
+        .email-box {
+            background: #f1f8f4;
+        }
+
+        .save-btn {
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .save-btn:hover {
+            background: #1b4332;
+            color: white;
+        }
+
+        .cancel-btn {
+            background: #e9f5ee;
+            color: #1b4332;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1b4332;
+        }
+
+        .back-link {
+            color: #2d6a4f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #1b4332;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    {% if profile_updated %}
+
+<!-- SUCCESS POPUP -->
+
+<div class="success-overlay" id="successPopup">
+
+    <div class="success-popup">
+
+        <div class="success-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h3>
+            Profile Changed Successfully
+        </h3>
+
+        <p>
+            Your profile information has been updated successfully.
+        </p>
+
+        <div class="redirect-text">
+
+            Redirecting to Home in
+
+            <span id="countdown">5</span>
+
+            seconds
+
+        </div>
+
+        <div class="progress-container">
+
+            <div class="progress-bar"
+                 id="progressBar">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+
+<div class="profile-wrapper">
+
+
+    <!-- Back -->
+
+    <div class="mb-3">
+
+        <a href="{% url 'home' name=user.Name %}"
+           class="back-link">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Home
+
+        </a>
+
+    </div>
+
+
+    <div class="profile-card">
+
+
+        <!-- HEADER -->
+
+        <div class="profile-header">
+
+            <h2>
+                <i class="fa-regular fa-user"></i>
+                My Profile
+            </h2>
+
+            <p>
+                Manage your personal information
+            </p>
+
+        </div>
+
+
+        <div class="profile-body">
+
+
+            <form method="POST"
+                  enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+
+                <!-- PROFILE PHOTO -->
+
+                <div class="photo-section">
+
+
+                    {% if profile.profile_photo %}
+
+                        <img
+                            src="{{ profile.profile_photo.url }}"
+                            class="profile-photo"
+                            alt="Profile Photo">
+
+                    {% else %}
+
+                        <div class="default-avatar">
+
+                            {{ user.Name|first|upper }}
+
+                        </div>
+
+                    {% endif %}
+
+
+                    <div class="change-photo">
+
+                        <label
+                            for="profile_photo"
+                            class="btn btn-outline-success">
+
+                            <i class="fa-solid fa-camera"></i>
+
+                            Change Photo
+
+                        </label>
+
+                        <input
+                            type="file"
+                            id="profile_photo"
+                            name="profile_photo"
+                            accept="image/*"
+                            hidden>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- PERSONAL INFORMATION -->
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    Personal Information
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <!-- NAME -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            value="{{ user.Name }}"
+                            required>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            class="form-control email-box"
+                            value="{{ user.Email }}"
+                            readonly>
+
+                        <small class="text-muted">
+
+                            Email cannot be changed here.
+
+                        </small>
+
+                    </div>
+
+
+                    <!-- MOBILE -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            name="mobile"
+                            class="form-control"
+                            value="{{ profile.mobile|default:'' }}"
+                            placeholder="Enter mobile number">
+
+                    </div>
+
+
+                    <!-- DOB -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Date of Birth
+                        </label>
+
+                        <input
+                            type="date"
+                            name="date_of_birth"
+                            class="form-control"
+                            value="{{ profile.date_of_birth|date:'Y-m-d' }}">
+
+                    </div>
+
+
+                </div>
+
+
+                <hr class="my-5">
+
+
+                <!-- ADDRESS -->
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Address
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="col-12">
+
+                        <label class="form-label">
+                            Address
+                        </label>
+
+                        <textarea
+                            name="address"
+                            class="form-control"
+                            rows="3"
+                            placeholder="Enter your address">{{ profile.address|default:'' }}</textarea>
+
+                    </div>
+
+
+                    <!-- CITY -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            City
+                        </label>
+
+                        <input
+                            type="text"
+                            name="city"
+                            class="form-control"
+                            value="{{ profile.city|default:'' }}"
+                            placeholder="Chennai">
+
+                    </div>
+
+
+                    <!-- STATE -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            State
+                        </label>
+
+                        <input
+                            type="text"
+                            name="state"
+                            class="form-control"
+                            value="{{ profile.state|default:'' }}"
+                            placeholder="Tamil Nadu">
+
+                    </div>
+
+
+                    <!-- PINCODE -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Pincode
+                        </label>
+
+                        <input
+                            type="text"
+                            name="pincode"
+                            class="form-control"
+                            value="{{ profile.pincode|default:'' }}"
+                            placeholder="600001">
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="d-flex justify-content-end gap-3 mt-5">
+
+
+                    <a href="{% url 'home' name=user.Name %}"
+                       class="cancel-btn text-decoration-none">
+
+                        Cancel
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="save-btn" onclick=fun()>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Save Changes
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const popup = document.getElementById("successPopup");
+
+    // If popup doesn't exist, nothing to do
+    if (!popup) {
+        return;
+    }
+
+    const countdownElement =
+        document.getElementById("countdown");
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    let seconds = 5;
+
+    // Make sure initial values are correct
+    countdownElement.textContent = seconds;
+    progressBar.style.width = "100%";
+
+
+    const countdownTimer = setInterval(function () {
+
+        seconds--;
+
+        // Update number
+        countdownElement.textContent = seconds;
+
+        // Update progress bar
+        progressBar.style.width =
+            (seconds / 5 * 100) + "%";
+
+
+        // When countdown reaches zero
+        if (seconds === 0) {
+
+            clearInterval(countdownTimer);
+
+            window.location.href =
+                "{% url 'home' name=user.Name %}";
+        }
+
+    }, 1000);
+
+});
+
+</script>
+
+
+</body>
+
+</html>

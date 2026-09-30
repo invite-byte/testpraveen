@@ -1,0 +1,992 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Wishlist — EVoltParts</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+
+        :root {
+            --ev-deep-forest: #1b4332;
+            --ev-emerald: #2d6a4f;
+            --ev-medium-green: #40916c;
+            --ev-soft-mint: #e8f5e9;
+            --ev-very-light-green: #f4f9f4;
+            --ev-mint-border: #c8e6c9;
+            --ev-card-bg: #ffffff;
+            --ev-charcoal: #212529;
+            --ev-border: #e9ecef;
+
+            --ev-shadow:
+                0 4px 16px rgba(45, 106, 79, 0.08);
+
+            --ev-shadow-hover:
+                0 12px 30px rgba(45, 106, 79, 0.14);
+
+            --ev-transition:
+                all 0.25s ease-in-out;
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--ev-very-light-green);
+            color: var(--ev-charcoal);
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .ev-navbar {
+            background-color: var(--ev-deep-forest);
+            border-bottom: 2px solid var(--ev-emerald);
+            padding: 0.85rem 1rem;
+        }
+
+
+        .ev-navbar .navbar-brand {
+            text-decoration: none;
+        }
+
+
+        .ev-logo-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ffffff;
+            color: var(--ev-emerald);
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .ev-logo-text {
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+
+        .ev-logo-text span {
+            color: #74c69d;
+        }
+
+
+        .navbar-action {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            transition: var(--ev-transition);
+        }
+
+
+        .navbar-action:hover {
+            background: rgba(255, 255, 255, 0.10);
+            color: #ffffff;
+        }
+
+
+        .navbar-action.active {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+
+        .wishlist-icon {
+            color: #ff6b81;
+        }
+
+
+        /* =========================================
+           PAGE HEADER
+        ========================================= */
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+
+        .breadcrumb {
+            margin-bottom: 10px;
+        }
+
+
+        .breadcrumb-item a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+
+        .breadcrumb-item a:hover {
+            color: var(--ev-emerald);
+        }
+
+
+        .wishlist-title {
+            font-weight: 800;
+            letter-spacing: -0.7px;
+        }
+
+
+        .wishlist-title-icon {
+            color: #dc3545;
+        }
+
+
+        .page-description {
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+
+
+        /* =========================================
+           ALERT
+        ========================================= */
+
+        .wishlist-alert {
+            border: none;
+            border-left: 4px solid var(--ev-medium-green);
+            background: #ffffff;
+            color: var(--ev-charcoal);
+        }
+
+
+        /* =========================================
+           PRODUCT CARD
+        ========================================= */
+
+        .ev-product-card {
+            height: 100%;
+
+            background-color: var(--ev-card-bg);
+
+            border: 1px solid var(--ev-border);
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+
+            position: relative;
+
+            box-shadow: var(--ev-shadow);
+
+            transition: var(--ev-transition);
+        }
+
+
+        .ev-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--ev-shadow-hover);
+            border-color: var(--ev-mint-border);
+        }
+
+
+        /* =========================================
+           PRODUCT IMAGE
+        ========================================= */
+
+        .ev-img-container {
+            height: 190px;
+
+            background-color: var(--ev-very-light-green);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            border-bottom: 1px solid var(--ev-border);
+
+            padding: 15px;
+        }
+
+
+        .ev-img-container img {
+            max-width: 100%;
+            max-height: 155px;
+
+            object-fit: contain;
+
+            transition: transform 0.25s ease;
+        }
+
+
+        .ev-product-card:hover .ev-img-container img {
+            transform: scale(1.04);
+        }
+
+
+        /* =========================================
+           REMOVE WISHLIST BUTTON
+        ========================================= */
+
+        .remove-wishlist-btn {
+            position: absolute;
+
+            top: 12px;
+            right: 12px;
+
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            color: #dc3545;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.12);
+
+            transition: var(--ev-transition);
+
+            z-index: 5;
+        }
+
+
+        .remove-wishlist-btn:hover {
+            background: #dc3545;
+            color: #ffffff;
+
+            transform: scale(1.08);
+        }
+
+
+        /* =========================================
+           PRODUCT CONTENT
+        ========================================= */
+
+        .product-content {
+            padding: 18px;
+
+            display: flex;
+            flex-direction: column;
+
+            flex-grow: 1;
+        }
+
+
+        .product-category {
+            display: inline-block;
+
+            color: var(--ev-medium-green);
+
+            font-size: 0.70rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .product-name {
+            font-size: 1rem;
+
+            font-weight: 700;
+
+            color: var(--ev-charcoal);
+
+            margin-bottom: 7px;
+
+            line-height: 1.35;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+        }
+
+
+        .product-vehicle {
+            color: #6c757d;
+
+            font-size: 0.75rem;
+
+            margin-bottom: 15px;
+
+            min-height: 20px;
+        }
+
+
+        .product-price-area {
+            margin-top: auto;
+
+            margin-bottom: 15px;
+        }
+
+
+        .discount-price {
+            color: var(--ev-emerald);
+
+            font-size: 1.15rem;
+
+            font-weight: 800;
+        }
+
+
+        .original-price {
+            color: #8a8f94;
+
+            font-size: 0.78rem;
+
+            text-decoration: line-through;
+        }
+
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+
+        .btn-ev-primary {
+            background-color: var(--ev-emerald);
+
+            color: #ffffff;
+
+            font-weight: 600;
+
+            border: none;
+
+            border-radius: 8px;
+
+            transition: var(--ev-transition);
+        }
+
+
+        .btn-ev-primary:hover {
+            background-color: var(--ev-deep-forest);
+
+            color: #ffffff;
+
+            transform: translateY(-1px);
+        }
+
+
+        .btn-ev-outline {
+            border: 1px solid var(--ev-mint-border);
+
+            color: var(--ev-emerald);
+
+            font-weight: 600;
+
+            background: #ffffff;
+
+            border-radius: 8px;
+
+            transition: var(--ev-transition);
+        }
+
+
+        .btn-ev-outline:hover {
+            background-color: var(--ev-soft-mint);
+
+            color: var(--ev-deep-forest);
+
+            border-color: var(--ev-medium-green);
+        }
+
+
+        .product-actions {
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .details-btn {
+            flex: 1;
+        }
+
+
+        .cart-btn {
+            width: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =========================================
+           EMPTY WISHLIST
+        ========================================= */
+
+        .empty-wishlist {
+            background: #ffffff;
+
+            border: 1px solid var(--ev-border);
+
+            border-radius: 18px;
+
+            padding: 70px 25px;
+
+            text-align: center;
+
+            box-shadow: var(--ev-shadow);
+        }
+
+
+        .empty-heart {
+            font-size: 4rem;
+
+            color: var(--ev-medium-green);
+
+            opacity: 0.45;
+
+            margin-bottom: 20px;
+        }
+
+
+        .empty-title {
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .empty-description {
+            color: #6c757d;
+
+            max-width: 500px;
+
+            margin: 0 auto 25px;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .ev-footer {
+            margin-top: 60px;
+
+            background: var(--ev-deep-forest);
+
+            color: #d8f3dc;
+
+            padding: 25px 0;
+        }
+
+
+        .ev-footer-text {
+            margin: 0;
+
+            font-size: 0.85rem;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 576px) {
+
+            .wishlist-title {
+                font-size: 1.8rem;
+            }
+
+            .ev-img-container {
+                height: 175px;
+            }
+
+            .empty-wishlist {
+                padding: 50px 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<nav class="navbar ev-navbar sticky-top">
+
+    <div class="container-xxl">
+
+        <!-- Logo -->
+
+        <a class="navbar-brand d-flex align-items-center gap-2"
+           href="{% url 'home' name=name %}">
+
+            <div class="ev-logo-icon">
+
+                <i class="fa-solid fa-bolt"></i>
+
+            </div>
+
+            <span class="ev-logo-text fs-4">
+                EVolt<span>Parts</span>
+            </span>
+
+        </a>
+
+
+        <!-- Right Actions -->
+
+        <div class="ms-auto d-flex align-items-center gap-2">
+
+
+            <!-- Wishlist -->
+
+            <a href="{% url 'wishlist' name=name %}"
+               class="navbar-action active"
+               title="My Wishlist"
+               aria-label="My Wishlist">
+
+                <i class="fa-solid fa-heart wishlist-icon fs-5"></i>
+
+            </a>
+
+
+            <!-- Cart -->
+
+            <a href="{% url 'cart' name=name %}"
+               class="navbar-action"
+               title="Shopping Cart"
+               aria-label="Shopping Cart">
+
+                <i class="fa-solid fa-cart-shopping fs-5"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================
+     MAIN CONTENT
+========================================= -->
+
+<main class="container-xxl py-5">
+
+
+    <!-- =====================================
+         PAGE HEADER
+    ====================================== -->
+
+    <div class="page-header">
+
+
+        <!-- Breadcrumb -->
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb"
+                style="font-size: 0.85rem;">
+
+                <li class="breadcrumb-item">
+
+                    <a href="{% url 'home' name=name %}">
+                        Home
+                    </a>
+
+                </li>
+
+                <li class="breadcrumb-item active"
+                    aria-current="page">
+
+                    My Wishlist
+
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+        <!-- Title -->
+
+        <h1 class="wishlist-title display-6 text-dark">
+
+            <i class="fa-solid fa-heart wishlist-title-icon me-2"></i>
+
+            My Saved Wishlist
+
+        </h1>
+
+
+        <p class="page-description">
+
+            Manage your saved electric two-wheeler parts and accessories.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================
+         MESSAGES
+    ====================================== -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="alert alert-success alert-dismissible fade show wishlist-alert shadow-sm"
+                 role="alert">
+
+                <i class="fa-solid fa-circle-check me-2"></i>
+
+                {{ message }}
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close">
+                </button>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+
+    <!-- =====================================
+         WISHLIST PRODUCTS
+    ====================================== -->
+
+    {% if wishlist_items %}
+
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+
+
+            {% for item in wishlist_items %}
+
+
+                <div class="col">
+
+
+                    <div class="ev-product-card">
+
+
+                        <!-- =================================
+                             PRODUCT IMAGE
+                        ================================== -->
+
+                        <div class="ev-img-container">
+
+
+                            {% if item.Image_url %}
+
+                                <img src="{{ item.Image_url }}"
+                                     alt="{{ item.Product_name }}"
+                                     loading="lazy">
+
+                            {% else %}
+
+                                <i class="fa-solid fa-gears text-emerald"
+                                   style="
+                                       font-size: 3.5rem;
+                                       color: var(--ev-emerald);
+                                       opacity: 0.65;
+                                   ">
+                                </i>
+
+                            {% endif %}
+
+
+
+                            <!-- REMOVE FROM WISHLIST -->
+
+                            <a href="{% url 'remove_favourite' name=name product_id=item.id %}"
+                               class="remove-wishlist-btn"
+                               title="Remove from wishlist"
+                               aria-label="Remove {{ item.Product_name }} from wishlist">
+
+                                <i class="fa-solid fa-heart"></i>
+
+                            </a>
+
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             PRODUCT INFORMATION
+                        ================================== -->
+
+                        <div class="product-content">
+
+
+                            <!-- Category -->
+
+                            <span class="product-category">
+
+                                {{ item.Category }}
+
+                            </span>
+
+
+                            <!-- Product Name -->
+
+                            <h5 class="product-name"
+                                title="{{ item.Product_name }}">
+
+                                {{ item.Product_name }}
+
+                            </h5>
+
+
+                            <!-- Vehicle -->
+
+                            <p class="product-vehicle">
+
+                                <i class="fa-solid fa-motorcycle me-1"
+                                   style="color: var(--ev-medium-green);">
+                                </i>
+
+                                Vehicle:
+
+                                <strong>
+                                    {{ item.Vehichel_name }}
+                                </strong>
+
+                            </p>
+
+
+
+                            <!-- =================================
+                                 PRICE
+                            ================================== -->
+
+                            <div class="product-price-area">
+
+
+                                {% if item.Discount_price %}
+
+                                    <div class="d-flex align-items-baseline gap-2">
+
+                                        <span class="discount-price">
+
+                                            ₹{{ item.Discount_price }}
+
+                                        </span>
+
+
+                                        {% if item.Discount_price != item.Price %}
+
+                                            <span class="original-price">
+
+                                                ₹{{ item.Price }}
+
+                                            </span>
+
+                                        {% endif %}
+
+                                    </div>
+
+                                {% else %}
+
+                                    <span class="discount-price">
+
+                                        ₹{{ item.Price }}
+
+                                    </span>
+
+                                {% endif %}
+
+
+                            </div>
+
+
+
+                            <!-- =================================
+                                 ACTION BUTTONS
+                            ================================== -->
+
+                            <div class="product-actions">
+
+
+                                <!-- Details -->
+
+                                <a href="{% url 'allproduct' name=name  %}"
+                                   class="btn btn-ev-outline btn-sm details-btn py-2"
+                                   title="View product details">
+
+                                    <i class="fa-solid fa-eye me-1"></i>
+
+                                    Details
+
+                                </a>
+
+
+
+                                <!-- Add To Cart -->
+
+                                <a href="{% url 'addtocart' name=name Product_id=item.id %}"
+                                   class="btn btn-ev-primary btn-sm cart-btn"
+                                   title="Add to Cart"
+                                   aria-label="Add {{ item.Product_name }} to cart">
+
+                                    <i class="fa-solid fa-cart-shopping"></i>
+
+                                </a>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+    {% else %}
+
+
+        <!-- =====================================
+             EMPTY WISHLIST
+        ====================================== -->
+
+        <div class="empty-wishlist">
+
+
+            <i class="fa-regular fa-heart empty-heart"></i>
+
+
+            <h3 class="empty-title">
+
+                Your Wishlist is Empty
+
+            </h3>
+
+
+            <p class="empty-description">
+
+                You haven't saved any spare parts or accessories
+                to your wishlist yet.
+
+            </p>
+
+
+            <a href="{% url 'allproduct' name=name %}"
+               class="btn btn-ev-primary px-4 py-2">
+
+                <i class="fa-solid fa-store me-2"></i>
+
+                Explore Spare Parts
+
+            </a>
+
+
+        </div>
+
+
+    {% endif %}
+
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="ev-footer">
+
+    <div class="container-xxl text-center">
+
+        <p class="ev-footer-text">
+
+            © {% now "Y" %} EVoltParts.
+            Specialized electric two-wheeler spare parts & accessories.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+</html>

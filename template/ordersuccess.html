@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EVoltParts - Order Successful</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f9f4;
+
+        }
+
+
+        .success-container {
+
+            width: 90%;
+
+            max-width: 500px;
+
+            background: white;
+
+            padding: 50px 35px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.10);
+
+        }
+
+
+        .success-icon {
+
+            width: 85px;
+
+            height: 85px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            background: #d8f3dc;
+
+            color: #2d6a4f;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 42px;
+
+            font-weight: bold;
+
+        }
+
+
+        h1 {
+
+            color: #1b4332;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        p {
+
+            color: #666;
+
+            line-height: 1.6;
+
+        }
+
+
+        .success-message {
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background: #f4f9f4;
+
+            border-radius: 10px;
+
+            color: #2d6a4f;
+
+        }
+
+
+        .menu-btn {
+
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 13px 25px;
+
+            background: #2d6a4f;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+        }
+
+
+        .menu-btn:hover {
+
+            background: #1b4332;
+
+        }
+
+
+        .redirect-text {
+
+            margin-top: 18px;
+
+            font-size: 13px;
+
+            color: #888;
+
+        }
+
+    </style>
+
+
+    <script>
+
+        setTimeout(function() {
+
+            window.location.href =
+                "{% url 'allproduct' name=name %}";
+
+        }, 5000);
+
+    </script>
+
+</head>
+
+
+<body>
+
+
+<div class="success-container">
+
+
+    <div class="success-icon">
+
+        ✓
+
+    </div>
+
+
+    <h1>
+
+        Order Placed Successfully!
+
+    </h1>
+
+
+    <p>
+
+        Thank you for shopping with
+
+        <strong>EVoltParts</strong>.
+
+    </p>
+
+
+    <div class="success-message">
+
+        Your order has been successfully verified.
+
+        <br>
+
+        We will process your order shortly.
+
+    </div>
+
+
+    <a
+        href="{% url 'home' name=name %}"
+        class="menu-btn">
+
+        Back to Menu
+
+    </a>
+
+
+    <div class="redirect-text">
+
+        You will be redirected to the menu
+
+        in 5 seconds...
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

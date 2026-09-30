@@ -1,0 +1,117 @@
+/* Core Design Tokens & Variables (Matches main site & auth suite) */
+:root {
+    --ev-bg-deep: #0b0f12;
+    --ev-card-bg: #12181f;
+    --ev-border-color: rgba(255, 255, 255, 0.08);
+    --ev-border-focus: #00ff88;
+    --ev-accent: #00ff88;
+    --ev-accent-hover: #00cc6d;
+    --ev-accent-subtle: rgba(0, 255, 136, 0.1);
+    --ev-text-main: #f8f9fa;
+    --ev-text-secondary: #94a3b8;
+    --ev-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.ev-body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--ev-bg-deep);
+    color: var(--ev-text-main);
+    overflow-x: hidden;
+}
+
+/* Utilities */
+.tracking-tight { letter-spacing: -0.02em; }
+.max-w-lg { max-width: 540px; }
+.max-w-md { max-width: 440px; }
+.extra-small { font-size: 0.8rem; }
+.text-accent { color: var(--ev-accent) !important; }
+.bg-accent-subtle { background-color: var(--ev-accent-subtle) !important; }
+.bg-gradient-dark { background: linear-gradient(180deg, var(--ev-bg-deep) 0%, #0e141a 100%); }
+
+/* Logo & Icons */
+.ev-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--ev-accent-subtle);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ev-accent);
+    font-size: 1rem;
+}
+
+.ev-auth-icon-wrap, .ev-success-icon-wrap {
+    width: 56px;
+    height: 56px;
+    background: var(--ev-accent-subtle);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Auth Left Background */
+.ev-auth-left {
+    background: radial-gradient(circle at 30% 30%, #15222e 0%, var(--ev-bg-deep) 80%);
+}
+
+.ev-cinematic-bike-card {
+    background: rgba(18, 24, 31, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--ev-border-color);
+}
+
+/* Auth Card */
+.ev-auth-card {
+    background-color: var(--ev-card-bg);
+    border: 1px solid var(--ev-border-color);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* Form Controls */
+.form-control:focus {
+    background-color: #0b0f12 !important;
+    color: #ffffff !important;
+    border-color: var(--ev-accent) !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 255, 136, 0.15) !important;
+}
+
+.input-group-text {
+    background-color: #0b0f12;
+    border-color: var(--ev-border-color);
+    color: var(--ev-text-secondary);
+}
+
+/* Buttons */
+.ev-btn-primary {
+    background-color: var(--ev-accent);
+    border: none;
+    color: #0b0f12;
+    transition: var(--ev-transition);
+}
+
+.ev-btn-primary:hover {
+    background-color: var(--ev-accent-hover);
+    color: #0b0f12;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+/* Requirement Item States */
+.requirement-item.valid {
+    color: var(--ev-accent) !important;
+}
+.requirement-item.valid i {
+    color: var(--ev-accent) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .ev-auth-left {
+        padding: 2rem 1.5rem !important;
+        min-height: auto;
+    }
+}
